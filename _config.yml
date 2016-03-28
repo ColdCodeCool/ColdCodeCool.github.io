@@ -14,17 +14,17 @@ defaults:
     scope:
       path: "" # empty string for all files
     values:
-      title: dbyll
+      title: Nirvana
 
 description: Stylish Jekyll Theme
 author:
-  name: dbyll
-  email: dbyll@ismaildemirbilek.com
-  github: dbtek
+  name: Li Yang
+  email: liyangsh48@gmail.com
+  github: ColdCodeCool
   twitter: dbtek
   pinterest: asd123
   linkedin: asd123
-  bio: Your stylish, minimalist theme!
+  bio: Know more! Do more! Do better!
   email_md5: 726351295ec82e145928582f595aa3aa
 
 rss_path: feed.xml
@@ -32,7 +32,7 @@ categories_path: categories.html
 tags_path: tags.html
 
 # set it as url of an image
-# sidebar_background_image: https://www.dropbox.com/s/g9h23zrycedxtk5/sky.png?raw=1
+sidebar_background_image: http://www.overpic.net/viewer.php?file=xxqkpqthbprqv3xh241d.png
 
 BASE_PATH:
 
