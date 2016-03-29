@@ -2,7 +2,7 @@
 layout: post
 title:  "CVXPY学习之LASSO"
 date: 2016-03-30 00:00:13
-categories: CVXPY学习
+categories: CVXPY
 ---
 #CVXPY介绍
 CVXPY是一个python版本的凸优化问题建模及求解工具，作者是凸优化大牛Stephen Boyd 的学生Steven Diamond。它以一种更加接近自然语言的方式对问题进行描述建模，相比其他求解工具，没有那么严格的标准化要求。一个简单的凸优化问题建模与求解例子如下：
