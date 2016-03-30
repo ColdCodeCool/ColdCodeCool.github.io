@@ -132,7 +132,7 @@ w^{*}=X^{T}y
 \begin{align}
 \frac{\partial{J_{L}(w)}}{\partial{w^j}}\bigg \rvert_{\bar{w}^j}=0
 \end{align}
-所以有:
+。所以有:
 \begin{align}
 -(X^{T}y-X^{T}X \bar{w})_{j}+\lambda sgn(\bar{w}^j)=0
 \end{align}
@@ -146,7 +146,7 @@ w^{*}=X^{T}y
 从而有:
 \begin{align}
 \bar{w}^j=sgn(w^{*j})(|w^{*j}-\lambda)_{+}
-其中(x)_{+}表示取$x$的正数部分；$(x)_{+}$=max(x,0)
+其中(x)_{+}表示取$x$的正数部分；$(x)_{+}=max(x,0)$
 。
 
 *情况2:gradient不存在，即$\bar{w}^j$=0*
