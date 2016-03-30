@@ -68,7 +68,51 @@ J_{R}(w)=\frac{1}{2}\lVert y - Xw \rVert^2 + \frac{\lambda}{2}\lVert w \rVert^2
 
 实际上ridge regression可以用下面的优化目标形式表达：
 \begin{align}
-& \min_{w} \quad \frac{1}{2} \lVert y - Xw \rVert^2 \\
+& \min_{w} \quad \frac{1}{2} \lVert y - Xw \rVert^2， \\
 & s.t. \lVert w \rVert_{2} < \theta \\
 \end{align}
-也就是说，我们依然可以优化线性回归的目标，但是条件是$w$的模长不能超过限制$\theta$.
+也就是说，我们依然可以优化线性回归的目标，但是条件是$w$的模长不能超过限制$\theta$。上面两种优化形式是等价的，可以找到一一对应的$\lambda$和$\theta$。
+
+### 稀疏约束，LASSO
+#### 几种范数定义
+0-范数：
+\begin{align}
+\lVert w \rVert_{0}=\sum_{i}1(w_i\neq 0)
+\end{align}
+1-范数：
+\begin{align}
+\lVert w \rVert_{1}=\sum_{1}|w_i|
+\end{align}
+2-范数：
+\begin{align}
+\lVert w \rVert_{2}=(\sum_{i}w_{i}^{2})^{\frac{1}{2}}
+\end{align}
+$\infty$-范数：
+\begin{align}
+\lVert w \rVert_{\infty}=max(|w_1|,|w_2|,\cdots,|w_n|)
+\end{align}
+如前面的ridge regression，对w做2范数约束，就是把解约束在一个$l_{2}-ball$里面，放缩是对球的半径放缩，因此w的每一个维度都在以同一个系数放缩，这样的放缩不会产生稀疏的解，即某些$w$的维度是0。而实际应用中，数据的维度中是存在噪音和冗余的，稀疏的解可以找到有用的维度并且减少冗余，提高回归预测的准确性和鲁棒性(减少了overfitting)。在压缩感知，稀疏编码等非常多的机器学习模型中都需要用到稀疏约束。
+
+稀疏约束最直观的形式应该是约束0范数，如上面的范数介绍，$w$的0范数是求$w$中非零元素的个数。如果约束$\lVert w \rVert_{0} \leq k$，就是约束非零元素个数不大于k。不过很明显，0范数是不连续的且非凸的，如果在线性回归中加上0范数的约束，就变成了一个组合优化问题:挑出$\leq$ k个系数然后做回归，找到目标函数的最小值对应的系数组合，是一个NP问题。
+
+值得注意的是，1范数也可以达到稀疏的效果，是0范数的最优凸近似，在一定条件下，0范数与1范数以概率1意义下等价。很重要的一点是，1范数容易求解，并且是凸的，所以几乎看得到稀疏约束的地方都是用的1范数。
+
+回到线性回归的讨论，就引出了LASSO(Least Absolute Shrinkage and Selection Operator)的问题：
+\begin{align}
+& \min_{w} \quad \frac{1}{2} \lVert y - Xw \rVert^2， \\
+& s.t. \lVert w \rVert_{1} < \theta \\
+\end{align}
+也就是说约束在一个$l_{1}-ball$里面。ridge和lasso的效果如图：![](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/Selection_028.png)红色的椭圆和蓝色区域的切点就是目标函数的最优解，我们可以看到，如果是圆，则很容易切到圆周的任意一点，但很难切到坐标轴上，因此没有稀疏；如果是菱形或多边形，则很容易切到坐标轴上，因此很容易产生稀疏的结果。这也说明了为什么1范数是稀疏的。
+
+### LASSO稀疏性的进一步理解：
+类似Ridge，我们也可以写出LASSO的优化目标函数：
+\begin{align}
+J_{L}(w)=\frac{1}{2}\lVert y-Xw \rVert^2+\lambda \sum_{i}|w_i|
+\end{align}
+根据一般的思路，我们希望对$J_{L}(w)$求导数=0求出最优解，即$\nabla J_{L}(w)=0$,但是1范数在0点是连续不可导的，没有gradient，这个时候需要subgradient：
+\\
+*定义1：记$f$:$U\rightarrow R$是一个定义在欧式空间凸集$R^{n}$上的实凸函数，在该空间中的一个向量$v$称为$f$在$x_0\in U$的次梯度(subgradient),如果对于任意$x\in U$,满足$f(x)-f(x_0)\geq v(x-x_0)$成立。*
+
+
+
+
