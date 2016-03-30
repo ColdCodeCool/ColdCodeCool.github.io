@@ -130,16 +130,18 @@ w^{*}=X^{T}y
 
 由于gradient在最小值点x=0，因此有:
 \begin{align}
-\frac{\partial{J_{L}(w)}}{\partial{w^j}}\rvert_{\bar{w}^j}=0
+\frac{\partial{J_{L}(w)}}{\partial{w^j}}\bigg \rvert_{\bar{w}^j}=0
 \end{align}
 所以有:
 \begin{align}
--(X^{T}y-X^{T}X\bar{x})_{j}+\lambda sgn(\bar{w}^j)=0
+-(X^{T}y-X^{T}X\bar{w})_{j}+\lambda sgn(\bar{w}^j)=0
 \end{align}
 其中$\lambda \geq 0$。所以:
 \begin{align}
+\begin{array}
 \bar{w}^j=w^{*j}-\lambda sgn(\bar{w}^j)=sgn(w^{*j})(|w^{*j}|-\lambda)\\
 (|w^{*j}|-\lambda)=|\bar{w}^j|\neq 0
+\end{array}
 \end{align}
 从而有:
 \begin{align}
