@@ -139,15 +139,20 @@ w^{*}=X^{T}y
 \end{align}
 
 其中$\lambda \geq 0$。所以:
+
 \begin{align}
 \bar{w}^j=w^{*j}-\lambda sgn(\bar{w}^j)=sgn(w^{*j})(|w^{*j}|-\lambda)
 \end{align}
+
 \begin{align}
 (|w^{*j}|-\lambda)=|\bar{w}^j|\neq 0
 \end{align}
+
 从而有:
+
 \begin{align}
 \bar{w}^j=sgn(w^{*j})(|w^{*j}-\lambda)_{+}
+\end{align}
 其中(x)_{+}表示取$x$的正数部分；$(x)_{+}=max(x,0)$
 。
 
