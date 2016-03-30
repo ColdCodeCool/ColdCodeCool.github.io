@@ -74,7 +74,7 @@ J_{R}(w)=\frac{1}{2}\lVert y - Xw \rVert^2 + \frac{\lambda}{2}\lVert w \rVert^2
 也就是说，我们依然可以优化线性回归的目标，但是条件是$w$的模长不能超过限制$\theta$。上面两种优化形式是等价的，可以找到一一对应的$\lambda$和$\theta$。
 
 ### 稀疏约束，LASSO
-#### 几种范数定义
+几种范数定义
 0-范数：
 \begin{align}
 \lVert w \rVert_{0}=\sum_{i}1(w_i\neq 0)
@@ -113,6 +113,57 @@ J_{L}(w)=\frac{1}{2}\lVert y-Xw \rVert^2+\lambda \sum_{i}|w_i|
 \\
 *定义1：记$f$:$U\rightarrow R$是一个定义在欧式空间凸集$R^{n}$上的实凸函数，在该空间中的一个向量$v$称为$f$在$x_0\in U$的次梯度(subgradient),如果对于任意$x\in U$,满足$f(x)-f(x_0)\geq v(x-x_0)$成立。*
 
+由在点$x_0$处的所有subgradient所组成的集合称为$x_0$处的subdifferential，记为$\partial f(x_0)$。注意subgradient和subdifferential只是对凸函数定义的。例如一维的情况，$f(x)=|x|$，在x=0处的subdifferential就是[-1,1]这个区间。又例如下图中，在$x_0$不同红线的斜率就是表示subgradient的大小，有无穷多。![](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/Selection_029.png)
 
+注意在$x$的gradient存在的点，subdifferential将是由gradient构成的一个单点集合。这样就将gradient的概念加以推广了。这个推广有一个很好的性质(condition for global minimizer)。
+\\
+*性质1*：点$x_0$是凸函数$f$的全局最小值，当且仅当*0*$\in \partial f(x_0)$。
 
+为了方便说明，需要做一个简化假设，即数据$X$的列向量是orthonomal的，即$X^{T}X=I$(当然没有这个假设LASSO也可以运作)。那么线性回归的最优解是:
+\begin{align}
+w^{*}=X^{T}y
+\end{align}
+假设lasso问题$J_{L}(w)$的全局最优解是$\bar{w}\in R^{n}$,考察它的任意一个维度$\bar{w}^j$，需要分别讨论两种情况：
 
+*情况1：gradient存在的区间，即$\bar{w}^j\neq 0$*
+
+由于gradient在最小值点x=0，因此有
+\begin{align}
+\frac{\partial{J_{L}(w)}}{\partial{w^j}}|_{\bar{w}^j}=0
+\end{align}
+所以有
+\begin{align}
+-(X^{T}y-X^{T}X\bar{x})_{j}+\lambda sgn(\bar{w}^j)=0
+\end{align}
+其中$\lambda \geq 0$。所以
+\begin{align}
+\bar{w}^j=w^{*j}-\lambda sgn(\bar{w}^j)=sgn(w^{*j})(|w^{*j}|-\lambda)\\
+(|w^{*j}|-\lambda)=|\bar{w}^j|\neq 0
+\end{align}
+从而有
+\begin{align}
+\bar{w}^j=sgn(w^{*j})(|w^{*j}-\lambda)_{+}
+其中(x)_{+}表示取$x$的正数部分；$(x)_{+}$=max(x,0)
+。
+
+*情况2:gradient不存在，即$\bar{w}^j$=0*
+
+根据前面的性质1，如果$\bar{w}^j$是最小值，则
+\begin{align}
+0\in \partial{J_{L}(\bar{w})}=-(X^{T}y-X^{T}X\bar{w})+\lambda e=\bar{w}-w^{*}+\lambda e
+\end{align}
+其中$e$是一个向量，每一个元素$e^j\in [-1,1]$,使得$0=-w^{*j*}+\lambda e^j$成立。因此
+\begin{align}
+|w^{*j}=\lambda |e^j| \leq \lambda
+\end{align}
+所以情况1和2可以合并。在这种特殊的orthonomal情况下，我们可以直接写出LASSO的最优解：
+\begin{align}
+\bar{w}^j=sgn(w^{*j})(|w^{*j}|-\lambda)_{+}
+\end{align}
+回顾ridge regression，若同样考虑orthonomal，则有
+\begin{align}
+\hat{w}_{R}=\frac{1}{1+\lambda}w^*
+\end{align}
+很容易得出结论，ridge实际上是做了一个放缩，而lasso实际是做了一个soft thresholding，把很多权重项置0了，所以就得到了稀疏的结果。
+
+除了做回归，LASSO的稀疏结果天然可以做机器学习中的特征选择，把非零的系数对应的维度选出即可，达到对问题的精简，去噪，以及减轻overfitting。
