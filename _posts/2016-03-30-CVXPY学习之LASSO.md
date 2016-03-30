@@ -70,6 +70,6 @@ J_{R}(w)=\frac{1}{2}\lVert y - Xw \rVert^2 + \frac{\lambda}{2}\lVert w \rVert^2
 \begin{align*}
 &\min_{w} \quad \frac{1}{2} \lVert y - Xw \rVert^2 \\
 &\begin{array}[t]{r@{}r@{}l@{\quad}l}
-s.t.&\lVert w \rVert_{2}<0
+s.t. & \lVert w \rVert_{2}<0 \\
 \end{array}
 \end{align*}
