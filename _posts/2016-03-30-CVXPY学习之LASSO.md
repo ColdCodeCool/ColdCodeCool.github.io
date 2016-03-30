@@ -164,9 +164,9 @@ w^{*}=X^{T}y
 
 所以情况1和2可以合并。在这种特殊的orthonomal情况下，我们可以直接写出LASSO的最优解：
 
-\begin{align*}
+\begin{align}
 \bar{w}^j=sgn(w^{*j})(|w^{*j}|-\lambda)\_{+}
-\end{align*}
+\end{align}
 
 回顾ridge regression，若同样考虑orthonomal，则有:
 
