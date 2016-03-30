@@ -99,8 +99,8 @@ $\infty$-范数：
 
 回到线性回归的讨论，就引出了LASSO(Least Absolute Shrinkage and Selection Operator)的问题：
 \begin{aligned}
-& \min_{w} \quad \frac{1}{2} \lVert y - Xw \rVert^2， \\
-& s.t. \lVert w \rVert_{1} < \theta \\
+& \min_{w} \quad \frac{1}{2} \lVert y - Xw \rVert^2， \\\\
+& s.t. \lVert w \rVert_{1} < \theta \\\\
 \end{aligned}
 也就是说约束在一个$l_{1}-ball$里面。ridge和lasso的效果如图：![](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/Selection_028.png)红色的椭圆和蓝色区域的切点就是目标函数的最优解，我们可以看到，如果是圆，则很容易切到圆周的任意一点，但很难切到坐标轴上，因此没有稀疏；如果是菱形或多边形，则很容易切到坐标轴上，因此很容易产生稀疏的结果。这也说明了为什么1范数是稀疏的。
 
@@ -110,16 +110,16 @@ $\infty$-范数：
 J_{L}(w)=\frac{1}{2}\lVert y-Xw \rVert^2+\lambda \sum_{i}|w_i|
 \end{equation}
 根据一般的思路，我们希望对$J_{L}(w)$求导数=0求出最优解，即$\nabla J_{L}(w)=0$,但是1范数在0点是连续不可导的，没有gradient，这个时候需要subgradient：
-\\
+\\\\
 *定义1：记$f$:$U\rightarrow R$是一个定义在欧式空间凸集$R^{n}$上的实凸函数，在该空间中的一个向量$v$称为$f$在$x_0\in U$的次梯度(subgradient),如果对于任意$x\in U$,满足$f(x)-f(x_0)\geq v(x-x_0)$成立。*
-\\
+\\\\
 由在点$x_0$处的所有subgradient所组成的集合称为$x_0$处的subdifferential，记为$\partial f(x_0)$。注意subgradient和subdifferential只是对凸函数定义的。例如一维的情况，$f(x)=|x|$，在x=0处的subdifferential就是[-1,1]这个区间。又例如下图中:![](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/Selection_029.png)
 
 在$x_0$不同红线的斜率就是表示subgradient的大小，有无穷多。
 注意在$x$的gradient存在的点，subdifferential将是由gradient构成的一个单点集合。这样就将gradient的概念加以推广了。这个推广有一个很好的性质(condition for global minimizer)。
-\\
+\\\\
 性质1：点$x\_0$是凸函数$f$的全局最小值，当且仅当0$\in \partial f(x\_0)$。
-\\
+\\\\
 为了方便说明，需要做一个简化假设，即数据$X$的列向量是orthonomal的，即$X^{T}X=I$(当然没有这个假设LASSO也可以运作)。那么线性回归的最优解是:
 \begin{equation}
 w^{*}=X^{T}y
