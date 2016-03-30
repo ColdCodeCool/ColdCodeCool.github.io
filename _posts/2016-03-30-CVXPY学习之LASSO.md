@@ -133,9 +133,11 @@ w^{*}=X^{T}y
 \frac{\partial{J_{L}(w)}}{\partial{w^j}}\bigg \rvert_{\bar{w}^j}=0
 \end{align}
 。所以有:
+
 \begin{align}
 -(X^{T}y-X^{T}X \bar{w})_{j}+\lambda sgn(\bar{w}^j)=0
 \end{align}
+
 其中$\lambda \geq 0$。所以:
 \begin{align}
 \bar{w}^j=w^{*j}-\lambda sgn(\bar{w}^j)=sgn(w^{*j})(|w^{*j}|-\lambda)
