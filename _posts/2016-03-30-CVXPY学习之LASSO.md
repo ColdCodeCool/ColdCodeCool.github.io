@@ -118,13 +118,13 @@ J_{L}(w)=\frac{1}{2}\lVert y-Xw \rVert^2+\lambda \sum_{i}|w_i|
 \\
 注意在$x$的gradient存在的点，subdifferential将是由gradient构成的一个单点集合。这样就将gradient的概念加以推广了。这个推广有一个很好的性质(condition for global minimizer)。
 \\
-性质1：点$x_0$是凸函数$f$的全局最小值，当且仅当0$\in \partial f(x_0)$。
+性质1：点$x\_0$是凸函数$f$的全局最小值，当且仅当0$\in \partial f(x_0)$。
 \\
 为了方便说明，需要做一个简化假设，即数据$X$的列向量是orthonomal的，即$X^{T}X=I$(当然没有这个假设LASSO也可以运作)。那么线性回归的最优解是:
 \begin{equation}
 w^{*}=X^{T}y
 \end{equation}
-假设lasso问题$J_{L}(w)$的全局最优解是$\bar{w}\in R^{n}$,考察它的任意一个维度$\bar{w}^j$，需要分别讨论两种情况：
+假设lasso问题$J\_{L}(w)$的全局最优解是$\bar{w}\in R^{n}$,考察它的任意一个维度$\bar{w}^j$，需要分别讨论两种情况：
 
 情况1：gradient存在的区间，即$\bar{w}^j\neq 0$。
 
