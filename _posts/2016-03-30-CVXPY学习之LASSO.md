@@ -133,9 +133,9 @@ w^{*}=X^{T}y
 \frac{\partial{J_{L}(w)}}{\partial{w^j}}\bigg \rvert_{\bar{w}^j}=0
 \end{equation}
 。所以有:
-\begin{aligned}
+\begin{align}
 -(X^{T}y-X^{T}X \bar{w})_{j}+\lambda sgn(\bar{w}^j)=0
-\end{aligned}
+\end{align}
 其中$\lambda \geq 0$。所以:
 \begin{equation}
 \bar{w}^j=w^{*j}-\lambda sgn(\bar{w}^j)=sgn(w^{*j})(|w^{*j}|-\lambda)
@@ -159,15 +159,15 @@ w^{*}=X^{T}y
 
 其中$e$是一个向量，每一个元素$e^j\in [-1,1]$,使得$0=-w^{*j*}+\lambda e^j$成立。因此:
 
-\begin{equation}
+\begin{align}
 |w^{*j}|=\lambda |e^j| \leq \lambda
-\end{equation}
+\end{align}
 
 所以情况1和2可以合并。在这种特殊的orthonomal情况下，我们可以直接写出LASSO的最优解：
 
-\begin{equation}
+\begin{align*}
 \bar{w}^j=sgn(w^{*j})(|w^{*j}|-\lambda)_{+}
-\end{equation}
+\end{align*}
 
 回顾ridge regression，若同样考虑orthonomal，则有:
 
