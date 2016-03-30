@@ -137,11 +137,11 @@ w^{*}=X^{T}y
 -(X^{T}y-X^{T}X \bar{w})\_{j}+\lambda sgn(\bar{w}^j)=0
 \end{align}
 其中$\lambda \geq 0$。所以:
-
+$$
 \begin{equation}
 \bar{w}^j=w^{*j}-\lambda sgn(\bar{w}^j)=sgn(w^{*j})(|w^{*j}|-\lambda)
 \end{equation}
-
+$$
 \begin{equation}
 (|w^{*j}|-\lambda)=|\bar{w}^j|\neq 0
 \end{equation}
