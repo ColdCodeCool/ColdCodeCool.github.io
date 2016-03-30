@@ -118,7 +118,7 @@ J_{L}(w)=\frac{1}{2}\lVert y-Xw \rVert^2+\lambda \sum_{i}|w_i|
 \\
 注意在$x$的gradient存在的点，subdifferential将是由gradient构成的一个单点集合。这样就将gradient的概念加以推广了。这个推广有一个很好的性质(condition for global minimizer)。
 \\
-*性质1*：点$x_0$是凸函数$f$的全局最小值，当且仅当*0*$\in \partial f(x_0)$。
+性质1：点$x_0$是凸函数$f$的全局最小值，当且仅当0$\in \partial f(x_0)$。
 \\
 为了方便说明，需要做一个简化假设，即数据$X$的列向量是orthonomal的，即$X^{T}X=I$(当然没有这个假设LASSO也可以运作)。那么线性回归的最优解是:
 \begin{equation}
@@ -130,11 +130,11 @@ w^{*}=X^{T}y
 
 由于gradient在最小值点x=0，因此有:
 \begin{equation}
-\frac{\partial{J_{L}(w)}}{\partial{w^j}}\bigg \rvert_{\bar{w}^j}=0
+\frac{\partial{J\_{L}(w)}}{\partial{w^j}}\bigg \rvert\_{\bar{w}^j}=0
 \end{equation}
 。所以有:
 \begin{align}
--(X^{T}y-X^{T}X \bar{w})_{j}+\lambda sgn(\bar{w}^j)=0
+-(X^{T}y-X^{T}X \bar{w})\_{j}+\lambda sgn(\bar{w}^j)=0
 \end{align}
 其中$\lambda \geq 0$。所以:
 \begin{equation}
@@ -145,16 +145,15 @@ w^{*}=X^{T}y
 \end{equation}
 。从而有:
 \begin{aligned}
-\bar{w}^j=sgn(w^{*j})(|w^{*j}-\lambda)_{+}
+\bar{w}^j=sgn(w^{*j})(|w^{*j}-\lambda)\_{+}
 \end{aligned}
-其中$(x)_{+}$表示取$x$的正数部分,$(x)_{+}=\max(x,0)$
-。
+其中$(x)_{+}$表示取$x$的正数部分,$(x)_{+}=\max(x,0)$。
 
 情况2:gradient不存在，即$\bar{w}^j$=0
 
 根据前面的性质1，如果$\bar{w}^j$是最小值，则:
 \begin{equation}
-0\in \partial{J_{L}(\bar{w})}=-(X^{T}y-X^{T}X\bar{w})+\lambda e=\bar{w}-w^{*}+\lambda e
+0\in \partial{J\_{L}(\bar{w})}=-(X^{T}y-X^{T}X\bar{w})+\lambda e=\bar{w}-w^{*}+\lambda e
 \end{equation}
 
 其中$e$是一个向量，每一个元素$e^j\in [-1,1]$,使得$$0=-w^{*j*}+\lambda e^j$$成立。因此:
@@ -166,13 +165,13 @@ w^{*}=X^{T}y
 所以情况1和2可以合并。在这种特殊的orthonomal情况下，我们可以直接写出LASSO的最优解：
 
 \begin{align*}
-\bar{w}^j=sgn(w^{*j})(|w^{*j}|-\lambda)_{+}
+\bar{w}^j=sgn(w^{*j})(|w^{*j}|-\lambda)\_{+}
 \end{align*}
 
 回顾ridge regression，若同样考虑orthonomal，则有:
 
 \begin{equation}
-\hat{w}_{R}=\frac{1}{1+\lambda}w^*
+\hat{w}\_{R}=\frac{1}{1+\lambda}w^*
 \end{equation}
 很容易得出结论，ridge实际上是做了一个放缩，而lasso实际是做了一个soft thresholding，把很多权重项置0了，所以就得到了稀疏的结果。
 
