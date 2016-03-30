@@ -157,7 +157,7 @@ w^{*}=X^{T}y
 0\in \partial{J_{L}(\bar{w})}=-(X^{T}y-X^{T}X\bar{w})+\lambda e=\bar{w}-w^{*}+\lambda e
 \end{equation}
 
-其中$e$是一个向量，每一个元素$e^j\in [-1,1]$,使得$0=-w^{*j*}+\lambda e^j$成立。因此:
+其中$e$是一个向量，每一个元素$e^j\in [-1,1]$,使得$$0=-w^{*j*}+\lambda e^j$$成立。因此:
 
 \begin{align}
 |w^{*j}|=\lambda |e^j| \leq \lambda
