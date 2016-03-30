@@ -67,10 +67,10 @@ J_{R}(w)=\frac{1}{2}\lVert y - Xw \rVert^2 + \frac{\lambda}{2}\lVert w \rVert^2
 其中$\lambda>0$是一个参数，加入正则项之后解就有了一些很好的性质，首先是对$w$的模做约束，使得它的数值会比较小，很大程度上减轻了overfitting的问题，其次是上面的求逆部分肯定可逆，在实际中使用ridge regression通过调节$\lambda$可以得到不同的回归模型。
 
 实际上ridge regression可以用下面的优化目标形式表达：
-\begin{equation}
+\begin{aligned}
 & \min_{w} \quad \frac{1}{2} \lVert y - Xw \rVert^2， \\
 & s.t. \lVert w \rVert_{2} < \theta \\
-\end{equation}
+\end{aligned}
 也就是说，我们依然可以优化线性回归的目标，但是条件是$w$的模长不能超过限制$\theta$。上面两种优化形式是等价的，可以找到一一对应的$\lambda$和$\theta$。
 
 ### 稀疏约束，LASSO
@@ -98,10 +98,10 @@ $\infty$-范数：
 值得注意的是，1范数也可以达到稀疏的效果，是0范数的最优凸近似，在一定条件下，0范数与1范数以概率1意义下等价。很重要的一点是，1范数容易求解，并且是凸的，所以几乎看得到稀疏约束的地方都是用的1范数。
 
 回到线性回归的讨论，就引出了LASSO(Least Absolute Shrinkage and Selection Operator)的问题：
-\begin{equation}
+\begin{aligned}
 & \min_{w} \quad \frac{1}{2} \lVert y - Xw \rVert^2， \\
 & s.t. \lVert w \rVert_{1} < \theta \\
-\end{equation}
+\end{aligned}
 也就是说约束在一个$l_{1}-ball$里面。ridge和lasso的效果如图：![](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/Selection_028.png)红色的椭圆和蓝色区域的切点就是目标函数的最优解，我们可以看到，如果是圆，则很容易切到圆周的任意一点，但很难切到坐标轴上，因此没有稀疏；如果是菱形或多边形，则很容易切到坐标轴上，因此很容易产生稀疏的结果。这也说明了为什么1范数是稀疏的。
 
 ### LASSO稀疏性的进一步理解：
