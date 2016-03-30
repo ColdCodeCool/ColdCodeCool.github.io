@@ -145,7 +145,7 @@ w^{*}=X^{T}y
 \end{equation}
 。从而有:
 \begin{aligned}
-\bar{w}^j=sgn(w^{\*j})(|w^{\*j}-\lambda)_{+}
+\bar{w}^j=sgn(w^{*j})(|w^{*j}-\lambda)_{+}
 \end{aligned}
 其中$(x)_{+}$表示取$x$的正数部分,$(x)_{+}=\max(x,0)$
 。
