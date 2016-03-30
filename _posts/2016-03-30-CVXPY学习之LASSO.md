@@ -130,7 +130,7 @@ w^{*}=X^{T}y
 
 由于gradient在最小值点x=0，因此有:
 \begin{align}
-\frac{\partial{J_{L}(w)}}{\partial{w^j}}|_{\bar{w}^j}=0
+\frac{\partial{J_{L}(w)}}{\partial{w^j}}\rvert_{\bar{w}^j}=0
 \end{align}
 所以有:
 \begin{align}
