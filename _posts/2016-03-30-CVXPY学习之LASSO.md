@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "CVXPY"
+title:  "CVXPY学习之LASSO"
 date: 2016-03-30 02:13:52
 categories: cvxpy
 ---
@@ -12,7 +12,7 @@ CVXPY是一款基于python的凸优化问题建模与求解工具。
 from cvxpy import *
 import numpy
 # Problem data.
-m = 30
+m = 3
 n = 20
 numpy.random.seed(1)
 A = numpy.random.randn(m, n)
@@ -49,3 +49,27 @@ f(x_i)=\sum_{n=1}^{p}w_{n}x_{in} + w_0=w^{T}x_i
 \begin{align}
 J(w)=\frac{1}{n}\sum_{i=1}^n(y_i-f(x_i))^2=\frac{1}{n}\lVert y - Xw \rVert^2
 \end{align}
+可以直接求出最优解:
+\begin{align}
+w^{*}=(X^{T}X)^{-1}X^{T}y
+\end{align}
+直接法求解的问题在于上述协方差矩阵$X^{T}X$不可逆时，目标函数最小化必要条件求解方程时有无穷解，无法求出最优解。特别地，当$p>n$时，必然导致上述情况，并且此时也将存在overfitting的问题。此时需要对$w$做一些限制，使得它的最优解空间变小，也就是所谓的regularization。
+
+## Ridge regression
+最常见的限制是对$w$的模做约束，如ridge regression,岭回归，也即在线性回归的基础上加上$l_{2}-norm$的约束，loss function变成:
+\begin{align}
+J_{R}(w)=\frac{1}{2}\lVert y - Xw \rVert^2 + \frac{\lambda}{2}\lVert w \rVert^2
+\end{align}
+此时有解析解:
+\begin{align}
+\hat{W_R}=(X^{T}X+\lambda I)^{-1}X^{T}y
+\end{align}
+其中$\lambda>0$是一个参数，加入正则项之后解就有了一些很好的性质，首先是对$w$的模做约束，使得它的数值会比较小，很大程度上减轻了overfitting的问题，其次是上面的求逆部分肯定可逆，在实际中使用ridge regression通过调节$\lambda$可以得到不同的回归模型。
+
+实际上ridge regression可以用下面的优化目标形式表达：
+\begin{align*}
+&\min_{w} \quad \frac{1}{2} \lVert y - Xw \rVert^2 \\
+&\begin{array}[t]{r@{}r@{}l@{\quad}l}
+s.t.&\lVert w \rVert_{2}<0
+\end{array}
+\end{align*}
