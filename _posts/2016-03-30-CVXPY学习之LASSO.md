@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "CVXPY"
-date: 2016-03-30 14:06:02
+date: 2016-01-30 01:33:52
 categories: cvxpy
 ---
 ## CVXPY介绍
