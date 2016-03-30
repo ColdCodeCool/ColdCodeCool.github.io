@@ -143,9 +143,9 @@ $$ \bar{w}^j=w^{*j}-\lambda sgn(\bar{w}^j)=sgn(w^{*j})(|w^{*j}|-\lambda) $$
 $$ (|w^{*j}|-\lambda)=|\bar{w}^j|\neq 0 $$
 
 从而有:
-\begin{align}
-\bar{w}^j=sgn(w^{*j})(|w^{*j}-\lambda)\_{+}
-\end{align}
+
+$$ \bar{w}^j=sgn(w^{*j})(|w^{*j}-\lambda)\_{+} $$
+
 ,其中$(x)_{+}$表示取$x$的正数部分,$(x)_{+}=\max(x,0)$。
 
 情况2:gradient不存在，即$\bar{w}^j$=0
