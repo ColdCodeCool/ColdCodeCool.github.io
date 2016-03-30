@@ -141,10 +141,12 @@ $$
 \begin{equation}
 \bar{w}^j=w^{*j}-\lambda sgn(\bar{w}^j)=sgn(w^{*j})(|w^{*j}|-\lambda)
 \end{equation}
+$$
 
+$$
 \begin{equation}
 (|w^{*j}|-\lambda)=|\bar{w}^j|\neq 0
-\end{equation}。
+\end{equation}
 $$
 从而有:
 \begin{aligned}
