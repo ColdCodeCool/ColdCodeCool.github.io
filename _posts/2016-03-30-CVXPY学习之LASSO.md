@@ -134,14 +134,14 @@ w^{*}=X^{T}y
 \end{align}
 所以有:
 \begin{align}
--(X^{T}y-X^{T}X\bar{w})_{j}+\lambda sgn(\bar{w}^j)=0
+-(X^{T}y-X^{T}X \bar{w})_{j}+\lambda sgn(\bar{w}^j)=0
 \end{align}
 其中$\lambda \geq 0$。所以:
 \begin{align}
-\begin{array}
-\bar{w}^j=w^{*j}-\lambda sgn(\bar{w}^j)=sgn(w^{*j})(|w^{*j}|-\lambda)\\
+\bar{w}^j=w^{*j}-\lambda sgn(\bar{w}^j)=sgn(w^{*j})(|w^{*j}|-\lambda)
+\end{align}
+\begin{align}
 (|w^{*j}|-\lambda)=|\bar{w}^j|\neq 0
-\end{array}
 \end{align}
 从而有:
 \begin{align}
@@ -157,7 +157,7 @@ w^{*}=X^{T}y
 \end{align}
 其中$e$是一个向量，每一个元素$e^j\in [-1,1]$,使得$0=-w^{*j*}+\lambda e^j$成立。因此:
 \begin{align}
-|w^{*j}=\lambda |e^j| \leq \lambda
+|w^{*j}|=\lambda |e^j| \leq \lambda
 \end{align}
 所以情况1和2可以合并。在这种特殊的orthonomal情况下，我们可以直接写出LASSO的最优解：
 \begin{align}
