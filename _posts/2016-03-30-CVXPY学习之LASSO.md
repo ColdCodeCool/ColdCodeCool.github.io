@@ -126,7 +126,7 @@ w^{*}=X^{T}y
 \end{equation}
 假设lasso问题$J_{L}(w)$的全局最优解是$\bar{w}\in R^{n}$,考察它的任意一个维度$\bar{w}^j$，需要分别讨论两种情况：
 
-*情况1：gradient存在的区间，即$\bar{w}^j\neq 0$*
+情况1：gradient存在的区间，即$\bar{w}^j\neq 0$。
 
 由于gradient在最小值点x=0，因此有:
 \begin{equation}
@@ -150,7 +150,7 @@ w^{*}=X^{T}y
 其中$(x)_{+}$表示取$x$的正数部分,$(x)_{+}=\max(x,0)$
 。
 
-*情况2:gradient不存在，即$\bar{w}^j$=0*
+情况2:gradient不存在，即$\bar{w}^j$=0
 
 根据前面的性质1，如果$\bar{w}^j$是最小值，则:
 \begin{equation}
