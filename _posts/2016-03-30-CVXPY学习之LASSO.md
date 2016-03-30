@@ -67,7 +67,7 @@ J_{R}(w)=\frac{1}{2}\lVert y - Xw \rVert^2 + \frac{\lambda}{2}\lVert w \rVert^2
 其中$\lambda>0$是一个参数，加入正则项之后解就有了一些很好的性质，首先是对$w$的模做约束，使得它的数值会比较小，很大程度上减轻了overfitting的问题，其次是上面的求逆部分肯定可逆，在实际中使用ridge regression通过调节$\lambda$可以得到不同的回归模型。
 
 实际上ridge regression可以用下面的优化目标形式表达：
-\begin{align*}
-&\min_{w} \quad \frac{1}{2} \lVert y - Xw \rVert^2 \\
-&s.t. \lVert w \rVert_{2} \leq \theta
-\end{align*}
+\begin{align}
+& \min_{w} \quad \frac{1}{2} \lVert y - Xw \rVert^2 \\
+& s.t. \lVert w \rVert_{2} \leq \theta \\
+\end{align}
