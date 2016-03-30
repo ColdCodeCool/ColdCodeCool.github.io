@@ -73,3 +73,4 @@ J_{R}(w)=\frac{1}{2}\lVert y - Xw \rVert^2 + \frac{\lambda}{2}\lVert w \rVert^2
 & s.t. \lVert w \rVert_{2} < \theta \\
 \end{align}
 \end{align}
+也就是说，我们依然可以优化线性回归的目标，但是条件是$w$的模长不能超过限制$\theta$.
