@@ -113,7 +113,7 @@ J_{L}(w)=\frac{1}{2}\lVert y-Xw \rVert^2+\lambda \sum_{i}|w_i|
 
 *定义1：记$f$:$U\rightarrow R$是一个定义在欧式空间凸集$R^{n}$上的实凸函数，在该空间中的一个向量$v$称为$f$在$x_0\in U$的次梯度(subgradient),如果对于任意$x\in U$,满足$f(x)-f(x_0)\geq v(x-x_0)$成立。*
 
-由在点$x_0$处的所有subgradient所组成的集合称为$x_0$处的subdifferential，记为$\partial f(x_0)$。注意subgradient和subdifferential只是对凸函数定义的。例如一维的情况，$f(x)=|x|$，在x=0处的subdifferential就是[-1,1]这个区间。又例如下图中:
+由在点$x_0$处的所有subgradient所组成的集合称为$x_0$处的subdifferential，记为$\partial{f(x_0)}$。注意subgradient和subdifferential只是对凸函数定义的。例如一维的情况，$f(x)=|x|$，在x=0处的subdifferential就是[-1,1]这个区间。又例如下图中:
 
 ![](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/Selection_029.png)
 
