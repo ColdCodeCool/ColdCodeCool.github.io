@@ -34,6 +34,78 @@ print constraints[0].dual_value
 
 {% endhighlight %}
 这是一个基本的例子，第一部分设置问题规模，设置seed来确保每次仿真得到相同的随机输入。第二部分为CVXPY的核心描述语言，第三部分是CVXPY内置的问题求解函数，以及结果存放规则。
+从本例出发，我们引出CVXPY的一些重要概念。
+
+### 命名空间(namespace)
+在本例中我们导入CVXPY包，使用了这样的语法，`from cvxpy import *`. 这是为了使本例看起来更简洁和准确。但是在生产环境的代码中我们应该总是将CVXPY以命名空间导入，即`import cvxpy as cvx`。那么在上述代码中，`gamma = Parameter(sign='positive')`应为`gamma = cvx.Parameter(sign='positive')`。不过，在较短的脚本里面，使用`from cvxpy import *`是安全的。
+
+需要注意的是在CVXPY表达中，python内置的`max`和`min`不能使用，取而代之的是CVXPY的函数`max_elemwise`和`max_entries`，以及`min_elemwise`和`min_entries`。 python内置的`sum`函数可以用在CVXPY的列表表达式中，用来将列表元素求和, 而CVXPY	的函数`sum_entries`用来将CVXPY表达式中的单个矩阵或向量。
+
+### 改变优化目标(changing objective)
+即使用CVXPY定义了一个优化问题之后，仍然可以重新改变它，通过对`prob.objective`及'prob.constraints[0]'重新赋值。
+
+### 无可行解及问题无下界(infeasible and unbounded)
+当问题`infeasible`时，`optimal value`为`inf`；当问题`unbounded`时，`optimal value`为`-inf`。
+
+### 其他问题状态指示
+如果问题求解成功，但准确率低于预期，那么问题状态指示将会包含
+- `optimal_inaccurate`
+- `unbounded_inaccurate`
+- `infeasible_inaccurate`
+总体来看，CVXPY提供了下面几个常量来指示问题求解状态：
+- OPTIMAL
+- INFEASIBLE
+- UNBOUNDED
+- OPTIMAL_INACCURATE
+- INFEASIBLE_INACCURATE
+- UNBOUNDED_INACCURATE
+例如，检验一个问题是否求解成功，可以使用`prob.status == OPTIMAL`.
+
+### 向量和矩阵
+CVXPY的变量可以是标量，向量以及矩阵。
+
+{% highlight python %}
+# A scalar variable.
+a = Variable()
+
+# Column vector variable of length 5.
+X = Variable(5)
+
+# Matrix variable with 4 rows and 7 columns.
+A = Variable(4, 7)
+{% endhighlight %}
+在一个CVXPY表达式中，如`A*x + b`,`A`和`b`可以是Numpy ndarrays，SciPy sparse matrices等。`A`和`b`甚至可以由不同类型的numeric library构建。
+
+当前CVXPY支持的可以用来作为常量类型的numeric library包括下面三种:
+- Numpy ndarray
+- Numpy matrices
+- SciPy sparse matrices
+
+### 限制条件(Constraints)
+在CVXPY中可以用`==`,`<=`,`>=`来构建限制条件，用[0 <= x, x <= 1]来表示0到1之间的数，0 <= x <= 1是错误的表达。
+
+特别需要注意的是限制条件中，严格的`<`和`>`是没有意义的，在CVXPY中不被允许的，因为他们没有物理意义。
+
+### 参数(Parameters)
+CVXPY中的参数是常量的符号表示，引入参数的目的是可以改变一个常量的值而不用重构整个问题。
+例如：
+
+{% highlight python%}
+# Positive scalar parameter.
+m = Parameter(sign='positive')
+
+# Column vector parameter with unknow sign (by default).
+c = Parameter(5)
+
+# Matrix parameter with negative entries.
+G = Parameter(4, 7, sign="negative")
+
+# Assigns a constant value to G.
+G.value = -numpy.ones((4, 7))
+
+# Initialize parameter with a value.
+rho = Parameter(sign="Positive", value=2)
+{% endhighlight %}
 
 ## LASSO
 介绍LASSO之前，先介绍几个基本概念。
@@ -172,3 +244,66 @@ $$ \bar{w}^j=sgn(w^{*j})(|w^{*j}|-\lambda)_{+} $$
 很容易得出结论，ridge实际上是做了一个放缩，而lasso实际是做了一个soft thresholding，把很多权重项置0了，所以就得到了稀疏的结果。
 
 除了做回归，LASSO的稀疏结果天然可以做机器学习中的特征选择，把非零的系数对应的维度选出即可，达到对问题的精简，去噪，以及减轻overfitting。
+
+### CVXPY实现LASSO
+
+{% highlight python %}
+
+from cvxpy import *
+import numpy
+import matplotlib.pyplot as plt
+
+# Problem data.
+n = 15
+m = 10
+numpy.random.seed(1)
+A = numpy.random.randn(n, m)
+b = numpy.random.randn(n, 1)
+# gamma must be positive due to DCP rules.
+gamma = Parameter(sign="positive")
+
+# Construct the problem.
+x = Variable(m)
+error = sum_squares(A*x - b)
+obj = Minimize(error + gamma*norm(x, 1))
+prob = Problem(obj)
+
+# Construct a trade-off curve of ||Ax-b||^2 vs. ||x||_1
+sq_penalty = []
+l1_penalty = []
+x_values = []
+gamma_vals = numpy.logspace(-4, 6)
+for val in gamma_vals:
+    gamma.value = val
+    prob.solve()
+    # Use expr.value to get the numerical value of
+    # an expression in the problem.
+    sq_penalty.append(error.value)
+    l1_penalty.append(norm(x, 1).value)
+    x_values.append(x.value)
+
+plt.rc('text', usetex=True)
+plt.rc('font', family='serif')
+plt.figure(figsize=(6, 10))
+
+# Plot trade-off curve.
+plt.subplot(211)
+plt.plot(l1_penalty, sq_penalty)
+plt.xlabel(r'\|x\|_1', fontsize=16)
+plt.ylabel(r'\|Ax-b\|^2', fontsize=16)
+plt.title('Trade-Off Curve for LASSO', fontsize=16)
+
+# Plot entries of x vs. gamma.
+plt.subplot(212)
+for i in range(m):
+    plt.plot(gamma_vals, [xi[i, 0] for xi in x_values])
+plt.xlabel(r'\gamma', fontsize=16)
+plt.ylabel(r'x_{i}', fontsize=16)
+plt.xscale('log')
+plt.title(r'\text{Entries of x vs. }\gamma', fontsize=16)
+
+plt.tight_layout()
+plt.show()
+
+{% endhighlight %}
+
