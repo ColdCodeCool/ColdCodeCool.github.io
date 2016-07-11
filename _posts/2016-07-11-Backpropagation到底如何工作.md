@@ -48,4 +48,4 @@ BP是帮助我们理解怎样通过改变weights和biases来改变cost function�
 
 ![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/matrix.png)
 
-这里$\nbala_{a}C$是一个向量, 由$\partial C/\partial a_{j}^L$组成.
+这里$\nabla_{a}C$是一个向量, 由$\partial C/\partial a_{j}^L$组成.
