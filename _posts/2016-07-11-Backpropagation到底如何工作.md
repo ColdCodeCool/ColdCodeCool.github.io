@@ -70,4 +70,19 @@ $(w^{l+1})^T$是第l+1层的权值矩阵的转置, 上式看起来很复杂, 但
 
 ![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/weightchange.png)
 
-式中的$\delta^{l}$和$a^{l-1}$我们已经知道如何计算. 那么上式可以重写为:$\frac{\partial C}{\partial w}=a_{in}\delta_{out}$, $`it's understood that $a_{in}$ is the activation of the neuron input to the weight w, and \delta_{out}`$
+式中的$\delta^{l}$和$a^{l-1}$我们已经知道如何计算. 那么上式可以重写为:$\frac{\partial C}{\partial w}=a_{in}\delta_{out}$, it's understood that $a_{in}$ is the activation of the neuron input to the weight w, and $\delta_{out}$ is the error of the neuron output from the weight w.
+
+由BP1-BP4我们可以得到一些启发, 首先我们从输出层开始. 考虑BP1中的$\delta^{\prime}(z_{j}^{L})$, 回顾sigmoid函数图形, 函数在趋近0和1的时候变得非常平坦, 这以为着前述变化率将非常小, 趋于0. 因此, 我们可以得出结论, 当输出层的激发值趋于0或1时, 最后一层的权值学习将会变得非常慢. 这种情况下的输出层, 我们称其是`saturated`, 对前面网络层也有类似结论.
+
+总结:
+
+![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/conclusion.png).
+
+## BP算法
+基本流程:
+
+![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/process.png)
+
+结合了SGD与mini-batch的BP:
+
+![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/bpsgd.png)
