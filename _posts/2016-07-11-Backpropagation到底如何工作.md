@@ -86,3 +86,5 @@ $(w^{l+1})^T$是第l+1层的权值矩阵的转置, 上式看起来很复杂, 但
 结合了SGD与mini-batch的BP:
 
 ![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/bpsgd.png)
+
+具体代码实现在上一篇已经给出.
