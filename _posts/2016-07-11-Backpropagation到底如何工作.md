@@ -51,9 +51,23 @@ BP是帮助我们理解怎样通过改变weights和biases来改变cost function�
 
 这里$\nabla_{a}C$是一个向量, 由$\partial C/\partial a_{j}^L$组成. 我们很容易可以得到$\nabla_{a}C=(a^L - y)$,那么上式可以表示为$\delta^L=(a^L-y)\odot \sigma^{\prime}(z^L)$. 这样一来, 所有符号都是漂亮的向量形式, 那么我们使用Numpy可以很方便地进行计算.
 
-### 第l层的误差(与l+1层的误差相关)
+### 第二个基本方程:第l层的误差(与l+1层的误差相关)
 第l层误差:
 
 ![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/lerror.png)
 
 $(w^{l+1})^T$是第l+1层的权值矩阵的转置, 上式看起来很复杂, 但是每个符号都很容易解释. 假设我们知道第l+1层的误差$\delta^{l+1}$, 当我们对l+1层的权值矩阵进行转置时, 我们可以从直觉上认为误差进行了转向, 向反方向传播, 从而给我们提供了对第l层的误差测量. 通过与$\sigma^{\prime}(z^l)$进行hadamard product, 则上述误差就通过激发函数传播给了第l层.
+
+### 第三个基本方程:由bias引起的cost变化率
+变化率:
+
+![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/biaschange.png)
+
+误差$\delta_{j}^{l}$正好等于第j个neuron的bias, 这对我们来说是个好消息, 因为在前两个方程中, 我们已经计算过第j个neuron的误差.重写BP3, 可表示为$\frac{\partial C}{\partial b}=\delta$.
+
+### 第四个基本方程:由weight引起的cost变化率
+有:
+
+![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/weightchange.png)
+
+式中的$\delta^{l}$和$a^{l-1}$我们已经知道如何计算. 那么上式可以重写为:$\frac{\partial C}{\partial w}=a_{in}\delta_{out}$, `it's understood that $a_{in}$ is the activation of the neuron input to the weight w, and $\delta_{out}`
