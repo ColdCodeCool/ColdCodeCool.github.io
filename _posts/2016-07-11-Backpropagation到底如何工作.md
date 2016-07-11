@@ -70,4 +70,4 @@ $(w^{l+1})^T$是第l+1层的权值矩阵的转置, 上式看起来很复杂, 但
 
 ![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/weightchange.png)
 
-式中的$\delta^{l}$和$a^{l-1}$我们已经知道如何计算. 那么上式可以重写为:$\frac{\partial C}{\partial w}=a_{in}\delta_{out}$, `it's understood that $a_{in}$ is the activation of the neuron input to the weight w, and $\delta_{out}`
+式中的$\delta^{l}$和$a^{l-1}$我们已经知道如何计算. 那么上式可以重写为:$\frac{\partial C}{\partial w}=a_{in}\delta_{out}$, $`it's understood that $a_{in}$ is the activation of the neuron input to the weight w, and \delta_{out}`$
