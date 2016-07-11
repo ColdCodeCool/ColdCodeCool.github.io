@@ -38,7 +38,8 @@ BP是帮助我们理解怎样通过改变weights和biases来改变cost function�
 
 ![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/error.png)
 
-第一个基本方程: 输出层的误差, $\delta^{L}$.
+
+### 第一个基本方程: 输出层的误差, $\delta^{L}$.
 
 ![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/bp1.png)
 
@@ -48,4 +49,11 @@ BP是帮助我们理解怎样通过改变weights和biases来改变cost function�
 
 ![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/matrix.png)
 
-这里$\nabla_{a}C$是一个向量, 由$\partial C/\partial a_{j}^L$组成. 我们很容易可以得到$\nabla_{a}C=(a^L - y)$,那么上式可以表示为$\delta^L=(a^L-y)\odot \sigma^{\prime}(z^L)$.
+这里$\nabla_{a}C$是一个向量, 由$\partial C/\partial a_{j}^L$组成. 我们很容易可以得到$\nabla_{a}C=(a^L - y)$,那么上式可以表示为$\delta^L=(a^L-y)\odot \sigma^{\prime}(z^L)$. 这样一来, 所有符号都是漂亮的向量形式, 那么我们使用Numpy可以很方便地进行计算.
+
+### 第l层的误差(与l+1层的误差相关)
+第l层误差:
+
+![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/lerror.png)
+
+$(w^{l+1})^T$是第l+1层的权值矩阵的转置, 上式看起来很复杂, 但是每个符号都很容易解释. 假设我们知道第l+1层的误差$\delta^{l+1}$, 当我们对l+1层的权值矩阵进行转置时, 我们可以从直觉上认为误差进行了转向, 向反方向传播, 从而给我们提供了对第l层的误差测量. 通过与$\sigma^{\prime}(z^l)$进行hadamard product, 则上述误差就通过激发函数传播给了第l层.
