@@ -23,6 +23,4 @@ $$
 
 $$
 E(\theta) = -\log(\hat{y_k})
-<!-- &= -\log(\frac{exp(\theta_k)}{\sum_{j}exp(\theta_j)})\\
-&= -\theta_k + \log(\sum_{j}exp(\theta_j))\\ -->
 $$
