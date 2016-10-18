@@ -25,15 +25,15 @@ $$
 \begin{split}
 E(\theta) & =-\log(\hat{y_k})\\
 		  & =-\log(\frac{exp(\theta_k)}{\sum_{j}exp(\theta_j)})\\
-		  & =-\theta_k + \log(\sum_{j}exp(\theta_j))
+		  & =-\theta_k + \log(\sum_{j}exp(\theta_j))\\
 \end{split}
 \end{equation}
 $$
 从而有:
-$$\frac{\partial E}{\partial \theta}=-\frac{\partial \theta_k}{\partial \theta} + \frac{\partial}{\partial \theta}(\log(\sum_{j}exp(\theta_j)))$$
-又有$\frac{\partial \theta_k}{\partial \theta_k}=1$并且$\frac{\partial \theta_k}{\partial \theta_q}=0$ for $q \not k$.则:
-$$\frac{\partial \theta_k}{\partial \theta}=y$$.
+$$\frac{\partial E}{\partial \theta}=-\frac{\partial \theta_k}{\partial \theta} + \frac{\partial}{\partial \theta}(\log(\sum_{j}exp(\theta_j)))\\$$
+又有$\frac{\partial \theta_k}{\partial \theta_k}=1$并且$\frac{\partial \theta_k}{\partial \theta_q}=0$ for $q \neq k$.则:
+$$\frac{\partial \theta_k}{\partial \theta}=y$$\\.
 对于第二部分:
-$$\frac{\partial}{\partial \theta_i}\log(\sum_{j}exp(\theta_j))=\frac{exp(\theta_i)}{\sum_{j}exp(\theta_j)}=\hat{y_i}$$
+$$\frac{\partial}{\partial \theta_i}\log(\sum_{j}exp(\theta_j))=\frac{exp(\theta_i)}{\sum_{j}exp(\theta_j)}=\hat{y_i}\\$$
 因此:
 $$\frac{\partial E}{\partial \theta}=\frac{\partial}{\partial \theta}\log(\sum_{j}exp(\theta_j))-\frac{\partial \theta_k}{\partial \theta}=\hat{y}-y$$
