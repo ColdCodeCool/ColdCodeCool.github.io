@@ -22,6 +22,6 @@ $$
 又知道$y_j=0$ for $j\neq k$及$y_k=1$.所以:
 \begin{align}
 E(\theta) &= -\log(\hat{y_k}) \\
-&= -\log(\frac{exp(\theta_k)}{\sum_{j}exp(\theta_j)})\\
-&= -\theta_k + \log(\sum_{j}exp(\theta_j))\\
+		  &= -\log(\frac{exp(\theta_k)}{\sum_{j}exp(\theta_j)})\\
+		  &= -\theta_k + \log(\sum_{j}exp(\theta_j))
 \end{align}
