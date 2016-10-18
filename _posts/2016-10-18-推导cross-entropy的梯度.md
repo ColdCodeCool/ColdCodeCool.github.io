@@ -6,6 +6,7 @@ categories: Deeplearning
 ---
 ## 梯度推导
 我们要证明:
+
 $$
 \frac{\partial E}{\partial \theta} = \hat{y} - y
 $$
