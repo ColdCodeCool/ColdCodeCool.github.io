@@ -21,6 +21,6 @@ $$
 $$
 又知道$y_j=0$ for $j\neq k$及$y_k=1$.所以:
 
-$$
+\begin{align}
 E(\theta) = -\log(\hat{y_k})
-$$
+\end{align}
