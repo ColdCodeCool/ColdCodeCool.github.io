@@ -21,6 +21,7 @@ $$
 $$
 又知道$y_j=0$ for $j\neq k$及$y_k=1$.所以:
 $$
-E(\theta) &= -\log(\hat{y_k})
-          &= -
+E(\theta) &= -\log(\hat{y_k}) \\
+		  &= -\log(\frac{exp(\theta_k)}{\sum_{j}exp(\theta_j)})\\
+		  &= -\theta_k + \log(\sum_{j}exp(\theta_j))\\
 $$
