@@ -20,8 +20,10 @@ $$
 \hat{y_i} = \frac{exp(\theta_i)}{\sum_{i}exp(\theta_{i})}
 $$
 又知道$y_j=0$ for $j\neq k$及$y_k=1$.所以:
-\begin{align}
-E(\theta) &= -\log(\hat{y_k}) \\
-		  &= -\log(\frac{exp(\theta_k)}{\sum_{j}exp(\theta_j)})\\
-		  &= -\theta_k + \log(\sum_{j}exp(\theta_j))
-\end{align}
+\begin{equation*}
+\begin{aligned}
+E(\theta) & =-\log(\hat{y_k}) \\
+		  & =-\log(\frac{exp(\theta_k)}{\sum_{j}exp(\theta_j)})\\
+		  & =-\theta_k + \log(\sum_{j}exp(\theta_j))
+\end{aligned}
+\end{equation*}
