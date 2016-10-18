@@ -20,6 +20,7 @@ $$
 \hat{y_i} = \frac{exp(\theta_i)}{\sum_{i}exp(\theta_{i})}
 $$
 又知道$y_j=0$ for $j\neq k$及$y_k=1$.所以:
+
 $$
 \begin{equation}
 \begin{split}
@@ -36,7 +37,7 @@ $$\frac{\partial E}{\partial \theta}=-\frac{\partial \theta_k}{\partial \theta} 
 
 又有$\frac{\partial \theta_k}{\partial \theta_k}=1$并且$\frac{\partial \theta_k}{\partial \theta_q}=0$ for $q \neq k$.则:
 
-$$\frac{\partial \theta_k}{\partial \theta}=y$$.
+$$\frac{\partial \theta_k}{\partial \theta}=y$$
 
 对于第二部分:
 
