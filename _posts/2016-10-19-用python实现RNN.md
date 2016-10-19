@@ -25,7 +25,7 @@ $$P(w_1,...,w_m) = \prod_{i=1}^{m}P(w_i|w_1,...,w_i-1)$$
 $$
 \begin{equation}
 \begin{split}
-s_t &= tanh(Ux_t + Ws_t-1)\\
+s_t &= tanh(Ux_t + Ws_{t-1})\\
 o_t &= softmax(Vs_t)\\
 \end{split}
 \end{equation}
@@ -248,5 +248,10 @@ def train_with_sgd(model, X_train, y_train, learning_rate=0.005, nepoch=100, eva
 	        # One SGD step
 	        model.sgd_step(X_train[i], y_train[i], learning_rate)
 	        num_examples_seen += 1
+
+np.random.seed(10)
+# Train on a small subset of the data to see what happens
+model = RNNNumpy(vocabulary_size)
+losses = train_with_sgd(model, X_train[:100], y_train[:100], nepoch=10, evaluate_loss_after=1)
 
 {% endhighlight %}
