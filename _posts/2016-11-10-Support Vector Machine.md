@@ -31,7 +31,7 @@ $$\gamma=\frac{w^{T}x+b}{|w|}=\frac{f(x)}{\|w\|}$$
 
 $$\tilde{\gamma}=y\gamma=\frac{\hat{\gamma}}{\|w\|}$$
 
-显然，functional margin和geometrical margin相差一个缩放因子$\|w\|$。按照我们前面的分析，对于一个数据点进行分类，当它的margin越大的时候，分类的confidence越大。对于一个包含$n$个点的数据集，我们可以很自然地定义它的margin为所有这$n$个点的margin值中最小的那个。于是，为了使得分类的confidence高，我们希望所选择的hyper plane能最大化这个margin值。不过我们有两个margin可以选，但functional margin明显不适合用来最大化的，因为在hyper plane固定以后，我们可以等比例地缩放$w$的长度和$b$的值，这样可以使得$f(x)=w^{T}x+b$的值任意大，亦即functional margin可以在hyper plane保持不变的情况下被取得任意大，而geometrical margin则没有这个问题，因为分子上为$|w|$，缩放$w$和$b$不会改变$\tilde{\gamma}$。它只随着hyper plane的变动而变动，因此，这是更加合适的一个margin。这样一来，我们的maximum margin classifier的目标函数即定义为
+显然，functional margin和geometrical margin相差一个缩放因子$\Vert w\Vert$。按照我们前面的分析，对于一个数据点进行分类，当它的margin越大的时候，分类的confidence越大。对于一个包含$n$个点的数据集，我们可以很自然地定义它的margin为所有这$n$个点的margin值中最小的那个。于是，为了使得分类的confidence高，我们希望所选择的hyper plane能最大化这个margin值。不过我们有两个margin可以选，但functional margin明显不适合用来最大化的，因为在hyper plane固定以后，我们可以等比例地缩放$w$的长度和$b$的值，这样可以使得$f(x)=w^{T}x+b$的值任意大，亦即functional margin可以在hyper plane保持不变的情况下被取得任意大，而geometrical margin则没有这个问题，因为分子上为$\Vert w\Vert$，缩放$w$和$b$不会改变$\tilde{\gamma}$。它只随着hyper plane的变动而变动，因此，这是更加合适的一个margin。这样一来，我们的maximum margin classifier的目标函数即定义为
 
 $$ \max \tilde{\gamma} $$
 
