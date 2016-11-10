@@ -2,7 +2,7 @@
 layout: post
 title: "Theano学习(1)"
 data: 2016-10-27 16:15:13
-categories: Theano Learn
+categories: TheanoLearn
 ---
 ## Theano是什么
 Theano定义了一种语言, 编译器和一个库.
