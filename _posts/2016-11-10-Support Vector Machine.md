@@ -248,7 +248,8 @@ $$
 先考虑在满足条件$0\leq \alpha_j \leq C$下，$\alpha_j$的上下界$L$及$H$.
 
 $$
-\begin{outline}
-\1 ff
-\end{outline}
+\begin{itemize}
+\item sa
+\item asd
+\end{itemize}
 $$
