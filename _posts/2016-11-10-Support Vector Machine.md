@@ -252,7 +252,7 @@ $$
 
 然后我们继续搜索$\alpha_{j}$来最优化目标函数，如果得到的值在$L$和$H$之外，那么就把这个值拉回该区间。可以证明$\alpha_j$由下面式子求得：
 
-$$\alpha_{j}:=\alpha_j-\frac{y_{j}(E_i-E_j)}$$
+$$\alpha_{j}:=\alpha_j-\frac{y_{j}(E_i-E_j)}{\eta}$$
 
 where
 
@@ -263,9 +263,9 @@ $$
 
 注意在求$\eta$时，可以用kernel function替换内积。然后我们通过下式将$\alpha_j$拉回$L$与$H$的区间
 
-\[
+$$
 \alpha_j :=
 \begin{cases}
 0
 \end{cases}
-\]
+$$
