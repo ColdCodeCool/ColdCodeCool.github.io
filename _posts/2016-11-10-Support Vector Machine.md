@@ -233,8 +233,8 @@ KKT条件用来检查最优解的收敛情况，这个问题的KKT条件如下
 
 $$
 \begin{align}
-\alpha_{i}=&0 &\Rightarrow &y_{i}(w^{T}x_{i}+b)&\geq 1\\
-\alpha_{i}=&C &\Rightarrow &y_{i}(w^{T}x_{i}+b)&\leq 1\\
-0<\alpha_i<&C &\Rightarrow &y_{i}(w^{T}x_{i}+b)&= 1 
+\alpha_{i}= &0 &\Rightarrow &y_{i}(w^{T}x_{i}+b) &\geq 1\\
+\alpha_{i}= &C &\Rightarrow &y_{i}(w^{T}x_{i}+b) &\leq 1\\
+0<\alpha_i< &C &\Rightarrow &y_{i}(w^{T}x_{i}+b) &= 1 
 \end{align}
 $$
