@@ -48,7 +48,7 @@ $$ \max \frac{1}{\|w\|}， s.t.，y_{i}(w^{T}x+b)\geq 1，i=1，\ldots，n$$
 
 ![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/svmplot1.png)
 
-中间的红色线条是Optimal Hyper Plane，另外两条线到红线的距离都是$\tilde{\gamma}$。至此，我们介绍了maximum margin classifier，对于给定数据集，我们找到了能划分最小margin的最优hyper plane，即得到了max min margin, $w.r.t w$ and $b$。可以看到两个支撑着中间gap的超平面，它们到中间的separating hyper plane的距离相等并且等于我们所能得到的最大的geometrical margin。而"支撑"这两个超平面的必然会有一些点，试想，如果某超平面没有碰到任意一个点的话，那么我们就可以进一步地扩充中间的gap，于是这个就不是最大的margin了。由于在$n$维向量空间里一个点实际上是和以原点为起点，该点为终点的一个向量等价，所以这些支撑的点就叫做支持向量。
+中间的红色线条是Optimal Hyper Plane，另外两条线到红线的距离都是$\tilde{\gamma}$。至此，我们介绍了maximum margin classifier，对于给定数据集，我们找到了能划分最小margin的最优hyper plane，即得到了max min margin, $w.r.t$ $w$ and $b$。可以看到两个支撑着中间gap的超平面，它们到中间的separating hyper plane的距离相等并且等于我们所能得到的最大的geometrical margin。而"支撑"这两个超平面的必然会有一些点，试想，如果某超平面没有碰到任意一个点的话，那么我们就可以进一步地扩充中间的gap，于是这个就不是最大的margin了。由于在$n$维向量空间里一个点实际上是和以原点为起点，该点为终点的一个向量等价，所以这些支撑的点就叫做支持向量。
 
 事实上，当最优的超平面确定下来之后，除了支持向量以外的其他点都不会对超平面产生任何影响，这种特性在实际当中的一个最直接的好处在于存储和计算上的优越性。例如，使用100万个点求出一个超平面，其中是supporting vector的点就只有100个，那么后续计算只需要记住这100个点的信息即可。（通常，除了K-Nearest Neighbor之类的Memory-based learning，其他算法也都不需要记忆所有点的信息）。
 
