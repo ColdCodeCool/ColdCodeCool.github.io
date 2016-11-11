@@ -249,7 +249,7 @@ $$
 
 $$
 \begin{outline}
-\1 If y_{i}\neq y_j, \quad L=\max(0,\alpha_j-\alpha_i), H=\min(C,C+\alpha_j-\alpha_i)\\
+\1 If y_{i}\neq y_j, \quad L=\max(0,\alpha_j-\alpha_i), H=\min(C,C+\alpha_j-\alpha_i)
 \1 If y_{i}=y_j, \quad L=\max(0,\alpha_i+\alpha_j-C), H=\min(C,\alpha_i+\alpha_j)
 \end{outline}
 $$
