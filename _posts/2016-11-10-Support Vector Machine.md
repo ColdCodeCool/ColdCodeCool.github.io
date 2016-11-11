@@ -299,3 +299,7 @@ b_2, &if 0 < \alpha_j < C\\
 \end{cases}
 $$
 .
+
+完整算法流程如下
+
+![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/svmplot4.png)
