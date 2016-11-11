@@ -89,6 +89,7 @@ $$
 \max_{\alpha} \quad \sum_{i=1}^{n}\alpha_{i}-\frac{1}{2}\sum_{i,j=1}^{n}\alpha_{i}\alpha_{j}y_{i}y_{j}x_{i}^{T}x_j
 \end{align}
 $$
+
 $$
 \begin{align*}
 &\begin{array}{t}{r@{}r@{}l@{\quad}l}
