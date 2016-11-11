@@ -268,6 +268,34 @@ $$
 $$
 \alpha_j :=
 \begin{cases}
-0
+H,   &if \alpha_j > H\\
+\alpha_j, &if L \leq \alpha_j \leq H\\
+L,   &if \alpha_{j} < L. 
 \end{cases}
 $$
+
+求出$\alpha_j$之后，$\alpha_i$由下式给出
+
+$$ \alpha_i := \alpha_i + y_{i}y_{j}(\alpha_{j}^{old}-\alpha_j) $$
+
+where $\alpha_{j}^{old}$是未经上面式子计算的原值。完整版的SMO能够处理$\eta=0$的情况。但在我们的简化版本中，如果$\eta=0$，我们可以将这种情况当做这组$\alpha$不能make progress的case。
+
+下面我们来计算$b$，根据已经计算出的$\alpha_i$和$\alpha_j$值，我们按照KKT条件来选取$b$。如果计算得到的$\alpha_i$不在bound上，即$0<\alpha_i<C$。$b_1$由下式给出，因为$b_1$能在当输入为$x_i$时迫使SVM输出$y_i$
+
+$$ b_1 = b-E_i-y_{i}(\alpha_i-\alpha_{i}^{old})\langle x_i-x_i\rangle-y_{j}(\alpha_j-\alpha_{j}^{old})\langle x_i,x_j\rangle $$
+
+类似地，$b_2$当$0<\alpha_j<C$时由下式给出
+
+$$ b_2 = b-E_j-y_{i}(\alpha_i-\alpha_{i}^{old})\langle x_i-x_j\rangle -y_{j}(\alpha_j-\alpha_{j}^{old})\langle x_{j},x_j\rangle$$
+
+如果两个$\alpha$都不在bound上，那么这些b是可行的，并且它们相等。如果两个$\alpha$都在bound上，即$\alpha_i=0$或$\alpha_i=C$，及$\alpha_j=0$或$\alpha_j=C$。那么所有在$b_1$和$b_2$之间的thresholds都满足KKT条件，我们可以令$b:=(b_1+b_2)/2$。下式给出了b的完整表达式
+
+$$
+b:=
+\begin{cases}
+b_1, &if 0 < \alpha_i < C\\
+b_2, &if 0 < \alpha_j < C\\
+(b_1+b_2)/2, &otherwise
+\end{cases}
+$$
+.
