@@ -257,8 +257,10 @@ $$\alpha_{j}:=\alpha_j-\frac{y_{j}(E_i-E_j)}{\eta}$$
 where
 
 $$
+\begin{align}
 E_k &= f(x_k)-y_k\\
 \eta &= 2\langle x_i,x_j\rangle-\langle x_i,x_i\rangle-\langle x_j,x_j\rangle
+\end{align}
 $$
 
 注意在求$\eta$时，可以用kernel function替换内积。然后我们通过下式将$\alpha_j$拉回$L$与$H$的区间
