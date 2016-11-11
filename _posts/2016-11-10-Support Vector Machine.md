@@ -112,7 +112,53 @@ $$
 
 为什么非支持向量对应的$\alpha$等于0？回忆我们之前得到的Lagrange目标函数：
 
-$$max_{\alpha_{i}\geq 0}\mathcal{L}(w,b,\alpha)=\max_{\alpha_{i}\geq 0}\frac{1}{2}\|w\|^2-\sum_{i=1}^{n}\alpha_{i}\color{red} {(y_{i}(w^{T}x_{i}+b)-1)}$$
+$$
+\max_{\alpha_{i}\geq 0}\mathcal{L}(w,b,\alpha)=\max_{\alpha_{i}\geq 0}\frac{1}{2}\|w\|^2-\sum_{i=1}^{n}\alpha_{i}\color{red} {(y_{i}(w^{T}x_{i}+b)-1)}
+$$
 
 注意到如果是支持向量的话，上式红色部分为0，而对于非支持向量，functional margin会大于1，因此红色部分大于0，而$\alpha_{i}$非负，为满足最大化，$\alpha_i$必须为0。
+
+至此，我们得到了支持向量的定义和来由。
+
+## Outliers
+如果数据有噪音，如图所示
+
+![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/svmplot2.png)
+
+对于这种偏离正常位置很远的数据点，我们称之为outlier，在我们原来的SVM模型里，outlier的存在有可能造成很大影响，因为超平面本身就是只有少数几个support vector组成的，如果这些support vector里又存在outlier的话，影响就很大。
+
+用黑圈圈起来的那个蓝点是一个outlier，它偏离了自己原本所应该在的那个半空间，如果直接忽略掉的话，原来的分割超平面还是挺好的，但是由于这个outlier的出现，导致分割超平面不得不被挤歪了，变成图中黑色虚线所示，同时margin也相应变小了。当然，更严重的情况是，如果这个outlier再往右上移动一些距离的话，我们将无法构造出能将数据分开的超平面来。
+
+为了处理这种情况，SVM允许数据点在一定程度上偏离一下超平面。例如上图中，黑色实线所对应的距离，就是该outlier偏离的距离，如果把它移动回来，就刚好落在原来的超平面上，而不会使得超平面发生变形了。具体来说，原来的约束条件
+
+$$
+y_{i}(w^{T}x_{i}+b)\geq 1，i=1，\ldots，n
+$$
+
+现在变成
+
+$$
+y_{i}(w^{T}x_{i}+b)\geq 1-\xi_i，i=1，\ldots，n
+$$
+
+其中$\xi_i\geq 0$成为松弛变量(slack variable)，对应数据点允许偏离的functional margin量。当然，如果允许$\xi_i$任意大的话，那任意的超平面都是符合条件的了。所以，我们在原来的目标函数后面加上一项，使得这些$\xi_i$的总和也要最小：
+
+$$\min \frac{1}{2}\|w\|^2+\color{red} {+C\sum_{i=1}^{n}\xi_i}$$
+
+其中$C$是一个参数，用于控制目标函数中两项之间的权重。其中，$\xi_{i}$是要优化的变量，而$C$是一个预先设定的常量。经过同样的Lagrange变换，得到dual problem为
+
+$$\max_{\alpha}\sum_{i=1}^{n}\alpha_{i}-\frac{1}{2}\sum_{i,j=1}^{n}\alpha_{i}\alpha_{j}y_{i}y_{j}\langle x_i,x_j\rangle$$
+
+$$
+\begin{align*}
+&\begin{array}{t}
+s.t.，& 0\leq \alpha_{i}\leq C，i=1,\ldots，n\\
+      & \sum_{i=1}^{n}\alpha_{i}y_i
+\end{array}
+\end{align*}
+$$
+
+至此，我们的SVM多了一项可以容忍噪音的技能。
+
+
 
