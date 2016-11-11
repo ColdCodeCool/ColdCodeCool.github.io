@@ -76,10 +76,10 @@ $$\max_{\alpha_i\geq 0}\min_{w,b}\mathcal{L}(w,b,\alpha)=d^*$$
 首先要让$\mathcal{L}$关于$w$和$b$最小化，我们分别令$\partial {\mathcal{L}}/\partial{w}$和$\partial {\mathcal{L}}/\partial{b}$等于零：
 
 $$
-\begin{equations}
+\begin{equation}
 & \frac{\partial{\mathcal{L}}}{\partial{w}}=0\Rightarrow w=\sum_{i=1}^{n}\alpha_{i}y_{i}x_i\\
 & \frac{\partial{\mathcal{L}}}{\partial{b}}=0\Rightarrow \sum_{i=1}^{n}\alpha_{i}y_i
-\end{equations}
+\end{equation}
 $$
 
 带回得到关于dual variable $\alpha$的优化问题：
