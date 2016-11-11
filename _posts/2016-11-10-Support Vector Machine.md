@@ -237,3 +237,4 @@ $$
 \alpha_{i}=&C &\Rightarrow &y_{i}(w^{T}x_{i}+b)&\leq 1\\
 0<\alpha_i<&C &\Rightarrow &y_{i}(w^{T}x_{i}+b)&= 1 
 \end{align}
+$$
