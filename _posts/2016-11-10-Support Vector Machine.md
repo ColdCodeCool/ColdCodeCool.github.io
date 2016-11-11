@@ -214,6 +214,26 @@ $$\kappa(x_1,x_2)=(\langle x_1,x_2\rangle +1)^2$$
 总结一下，对于非线性情况，SVM的处理方法是选择一个核函数，通过将数据映射到高维空间，来解决在原始空间中线性不可分的问题。除了SVM之外，任何将计算表示为数据点内积的方法，都可以使用核方法进行非线性扩展。
 
 ## Sequential Minimal Optimization
+关于这一算法的解释及实现，互联网上没有找到足够好的中文内容，所以试图自己翻译一下Andrew Ng的Simplified SMO。
 
+回顾我们得到dual problem of the regularized SVM optimization problem：
 
+$$\max_{\alpha}\quad W(\alpha)=\sum_{i=1}^{n}\alpha_{i}-\frac{1}{2}\sum_{i,j=1}^{n}\alpha_{i}\alpha_{j}y_{i}y_{j}\langle \phi(x_i),\phi(x_j)\rangle$$
 
+$$
+\begin{align*}
+&\begin{array}{t}
+s.t.，& 0\leq \alpha_{i}\leq C，i=1,\ldots，n\\
+      & \sum_{i=1}^{n}\alpha_{i}y_i
+\end{array}
+\end{align*}
+$$
+
+KKT条件用来检查最优解的收敛情况，这个问题的KKT条件如下
+
+$$
+\begin{align}
+\alpha_{i}=&0 &\Rightarrow &y_{i}(w^{T}x_{i}+b)&\geq 1\\
+\alpha_{i}=&C &\Rightarrow &y_{i}(w^{T}x_{i}+b)&\leq 1\\
+0<\alpha_i<&C &\Rightarrow &y_{i}(w^{T}x_{i}+b)&= 1 
+\end{align}
