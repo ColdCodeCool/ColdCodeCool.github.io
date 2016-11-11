@@ -247,9 +247,5 @@ $$
 
 先考虑在满足条件$0\leq \alpha_j \leq C$下，$\alpha_j$的上下界$L$及$H$.
 
-$$
-\begin{itemize}
-\item sa
-\item asd
-\end{itemize}
-$$
+- $If y_{i}\neq y_{j},\quad L=\max(0,\alpha_{j}-\alpha_{i}), H=\min(C,C+\alpha_{j}-\alpha_{i})$
+- $If y_{i}=y_{j},\quad L=\max(0,\alpha_{i}+\alpha_{j}-C), H=\min(C,\alpha_{i}+\alpha_{j})$
