@@ -213,7 +213,7 @@ $$\kappa(x_1,x_2)=(\langle x_1,x_2\rangle +1)^2$$
 
 总结一下，对于非线性情况，SVM的处理方法是选择一个核函数，通过将数据映射到高维空间，来解决在原始空间中线性不可分的问题。除了SVM之外，任何将计算表示为数据点内积的方法，都可以使用核方法进行非线性扩展。
 
-## Sequential Minimal Optimization
+## Simplified Sequential Minimal Optimization
 关于这一算法的解释及实现，互联网上没有找到足够好的中文内容，所以试图自己翻译一下Andrew Ng的Simplified SMO。
 
 回顾我们得到dual problem of the regularized SVM optimization problem：
@@ -237,4 +237,19 @@ $$
 \alpha_{i}= C &\Rightarrow y_{i}(w^{T}x_{i}+b) \leq 1\\
 0<\alpha_i< C &\Rightarrow y_{i}(w^{T}x_{i}+b) = 1 
 \end{align}
+$$
+
+事实上得到的dual problem已经能用常规QP优化包求解，但常规优化包求解较慢。所以我们考虑使用SMO，基本思想是每次选取两个$\alpha$作为变量，其他$\alpha$均作为已知常数（实现的时候体现为手动赋值）。完整版本的SMO的大部分工作就在于如何启发式地选取这两个$\alpha$，使得优化函数能被最大化。但对于大数据集(m个)来说，这个过程需要进行m(m-1)次，并且很多组合并不能得到更好结果。
+
+因此，在本文中我们介绍更加简化的SMO，使用一个相对简单的启发式。我们遍历整个$\alpha_i,i=1,\ldots,m$。如果某个$\alpha_i$在一定的numerical tolerance情况下仍然不能满足KKT条件，那么在剩下的m-1个里面随机选取一个$\alpha_j$，然后同时优化这两个参数。如果在几部迭代之后，所有的$\alpha$都不再发生变化，那么算法终止。
+
+在选择了Lagrange乘子$\alpha_i$和$\alpha_j$之后，我们首先来计算出它们的限制条件，即上下界。
+
+先考虑在满足条件$0\leq \alpha_j \leq C$下，$\alpha_j$的上下界$L$及$H$
+
+$$
+\begin{itemize}
+\item If y_{i}\neq y_j, \quad L=\max(0,\alpha_j-\alpha_i), H=\min(C,C+\alpha_j-\alpha_i)
+\item If y_{i}=y_j, \quad L=\max(0,\alpha_i+\alpha_j-C), H=\min(C,\alpha_i+\alpha_j)
+\end{itemize}
 $$
