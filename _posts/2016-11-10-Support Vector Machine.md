@@ -99,3 +99,15 @@ s.t.，& \alpha_{i}\geq 0，i=1,\ldots，n\\
 \end{align*}
 $$
 
+这个问题有更加高效的解法（SMO），先不做介绍。我们先来关注推导过程中得到的一些有趣的形式，前面得到$w=\sum_{i=1}^{n}\alpha_{i}y_{i}x_{i}$，因此
+
+$$f(x)&=(\sum_{i=1}^{n}\alpha_{i}y_{i}x_{i})^{T}x+b\\
+      &=\sum_{i=1}^{n}\alpha_{i}y_{i}\langle x_{i},x\rangle +b$$
+
+这里的形式的有趣之处在于，对于新点$x$的预测，只需要计算它与训练数据点的内积即可，这一点至关重要，是之后使用kernel进行非线性推广的基本前提。此外，所谓Supporting Vector也在这里显示出来--事实上，所有非SV所对应的系数$\alpha$都等于0，因此新点的内积计算实际上只要针对少量的支持向量而不是所有的训练数据。
+
+为什么非支持向量对应的$\alpha$等于0？回忆我们之前得到的Lagrange目标函数：
+
+$$max_{\alpha_{i}\geq 0}\mathcal{L}(w,b,\alpha)=\max_{\alpha_{i}\geq 0}\frac{1}{2}\|w\|^2-\sum_{i=1}^{n}\alpha_{i}{\color{red} (y_{i}(w^{T}x_{i}+b)-1)}$$
+
+
