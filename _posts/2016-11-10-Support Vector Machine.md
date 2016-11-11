@@ -293,8 +293,8 @@ $$ b_2 = b-E_j-y_{i}(\alpha_i-\alpha_{i}^{old})\langle x_i-x_j\rangle -y_{j}(\al
 $$
 b:=
 \begin{cases}
-b_1, &if 0 < \alpha_i < C\\
-b_2, &if 0 < \alpha_j < C\\
+b_1, &if\ 0 < \alpha_i < C\\
+b_2, &if\ 0 < \alpha_j < C\\
 (b_1+b_2)/2, &otherwise
 \end{cases}
 $$
