@@ -92,7 +92,7 @@ $$
 
 $$
 \begin{align*}
-&\begin{array}{t}{r@{}r@{}l@{\quad}l}
+&\begin{array}{t}
 s.t.，& \alpha_{i}\geq 0，i=1,\ldots，n\\
       & \sum_{i=1}^{n}\alpha_{i}y_i
 \end{array}
