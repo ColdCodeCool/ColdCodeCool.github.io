@@ -245,7 +245,7 @@ $$
 
 在选择了Lagrange乘子$\alpha_i$和$\alpha_j$之后，我们首先来计算出它们的限制条件，即上下界。
 
-先考虑在满足条件$0\leq \alpha_j \leq C$下，$\alpha_j$的上下界$L$及$H$
+先考虑在满足条件$0\leq \alpha_j \leq C$下，$\alpha_j$的上下界$L$及$H$.
 
 $$
 \begin{align}
