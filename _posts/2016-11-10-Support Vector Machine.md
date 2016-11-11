@@ -268,9 +268,9 @@ $$
 $$
 \alpha_j :=
 \begin{cases}
-H,   &if \alpha_j > H\\
-\alpha_j, &if L \leq \alpha_j \leq H\\
-L,   &if \alpha_{j} < L. 
+H,   &if \alpha_{j}^{new,unclipped} > H\\
+\alpha_{j}^{new,unclipped}, &if L \leq \alpha_{j}^{new,unclipped} \leq H\\
+L,   &if \alpha_{j}^{new,unclipped} < L. 
 \end{cases}
 $$
 
