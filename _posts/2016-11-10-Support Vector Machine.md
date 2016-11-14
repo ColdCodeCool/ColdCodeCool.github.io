@@ -72,7 +72,7 @@ $$\min_{w,b}\theta(w)=\min_{w,b}\max_{\alpha_i\geq 0}\mathcal{L}(w,b,\alpha)=p^*
 
 $$\max_{\alpha_i\geq 0}\min_{w,b}\mathcal{L}(w,b,\alpha)=d^*$$
 
-当然，交换以后的问题不再等价于原问题，这个新问题的最优值用$d^*$来表示。并且，我们有$d^{*}\leq p^*$，总之第二个问题的最优值在这里提供了一个第一个问题的最优值的一个下界，在满足某些条件的情况下，这两者相等，这时我们就可以通过求解第二个问题间接求解第一个问题。具体来说，就是要满足KKT条件。
+当然，交换以后的问题不再等价于原问题，这个新问题的最优值用$d^\*$来表示。并且，我们有$d^{\*}\leq p^\*$，总之第二个问题的最优值在这里提供了一个第一个问题的最优值的一个下界，在满足某些条件的情况下，这两者相等，这时我们就可以通过求解第二个问题间接求解第一个问题。具体来说，就是要满足KKT条件。
 
 首先要让$\mathcal{L}$关于$w$和$b$最小化，我们分别令$\partial {\mathcal{L}}/\partial{w}$和$\partial {\mathcal{L}}/\partial{b}$等于零：
 
@@ -266,7 +266,7 @@ $$
 更新了$\alpha_j$，相应地我们可以很容易求出$\alpha_i$。上式推导过程如下：
 
 - 在等式约束中，将除$\alpha_i$和$\alpha_j$之外的其他$\alpha$固定，得到一个$\alpha_j$关于$\alpha_i$的表达式。
-- 将上式带入dual objective function中，得到一个关于$\alpha_j$的二次函数，令其二阶导数等于0（一般成立），得到了上面更新$\alpha_j$的表达式，记其为$\alpha_{j}^{new,unclipped}，$E_k$和$\eta$是推导$\alpha_{j}^{new,unclipped}$时产生的中间量。
+- 将上式带入dual objective function中，得到一个关于$\alpha_j$的二次函数，令其二阶导数等于0（一般成立），得到了上面更新$\alpha_j$的表达式，记其为$\alpha_{j}^{new,unclipped}$，$E_k$和$\eta$是推导$\alpha_{j}^{new,unclipped}$时产生的中间量。
 
 
 
