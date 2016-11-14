@@ -245,7 +245,7 @@ $$
 
 在选择了Lagrange乘子$\alpha_i$和$\alpha_j$之后，我们首先来计算出它们的限制条件，即上下界。
 
-先考虑在满足条件$0\leq \alpha_j \leq C$下，$\alpha_j$的上下界$L$及$H$.
+先考虑在满足条件$0\leq \alpha_j \leq C$下，$\alpha_j$的上下界$L$及$H$. 若仅考虑两个$\alpha$情况，Objective function的不等式约束将$\alpha$限制在了$C\times C$的矩形内，而等式约束将$\alpha$约束在一条直线上，两者结合，$\alpha$被约束在被矩形截断的线段上。不难推导出$\alpha$的上下界，如下所示
 
 - $If \quad y_{i}\neq y_{j},\quad L=\max(0,\alpha_{j}-\alpha_{i}), H=\min(C,C+\alpha_{j}-\alpha_{i})$
 - $If \quad y_{i}=y_{j},\quad L=\max(0,\alpha_{i}+\alpha_{j}-C), H=\min(C,\alpha_{i}+\alpha_{j})$
@@ -263,7 +263,12 @@ E_k &= f(x_k)-y_k\\
 \end{align}
 $$
 
-注意在求$\eta$时，可以用kernel function替换内积。然后我们通过下式将$\alpha_j$拉回$L$与$H$的区间
+更新了$\alpha_j$，相应地我们可以很容易求出$\alpha_i$。上式推导过程如下：$\Phi$
+
+
+
+
+然后我们通过下式将$\alpha_j$拉回$L$与$H$的区间
 
 $$
 \alpha_j :=
