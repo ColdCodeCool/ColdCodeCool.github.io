@@ -287,7 +287,7 @@ where $\alpha_{j}^{old}$是未经上面式子计算的原值。上式的推导�
 
 $$\alpha_{i}^{new} y_i + \alpha_{j}^{new} y_j=\alpha_{i}^{old} y_i +\alpha_{j}^{old} y_j=\gamma$$
 
-完整版的SMO能够处理$\eta=0$的情况。但在我们的简化版本中，如果$\eta=0$，我们可以将这种情况当做这组$\alpha$不能make progress的case。
+等式两边等式乘以$y_i$,进而得出.完整版的SMO能够处理$\eta=0$的情况。但在我们的简化版本中，如果$\eta=0$，我们可以将这种情况当做这组$\alpha$不能make progress的case。
 
 下面我们来计算$b$，根据已经计算出的$\alpha_i$和$\alpha_j$值，我们按照KKT条件来选取$b$。如果计算得到的$\alpha_i$不在bound上，即$0<\alpha_i<C$。$b_1$由下式给出，因为$b_1$能在当输入为$x_i$时迫使SVM输出$y_i$
 
