@@ -263,7 +263,10 @@ E_k &= f(x_k)-y_k\\
 \end{align}
 $$
 
-更新了$\alpha_j$，相应地我们可以很容易求出$\alpha_i$。上式推导过程如下：$\Phi$
+更新了$\alpha_j$，相应地我们可以很容易求出$\alpha_i$。上式推导过程如下：
+
+- 在等式约束中，将除$\alpha_i$和$\alpha_j$之外的其他$\alpha$固定，得到一个$\alpha_j$关于$\alpha_i$的表达式。
+- 将上式带入dual objective function中，得到一个关于$\alpha_j$的二次函数，令其二阶导数等于0（一般成立），得到了上面更新$\alpha_j$的表达式，记其为$\alpha_{j}^{new,unclipped}，$E_k$和$\eta$是推导$\alpha_{j}^{new,unclipped}$时产生的中间量。
 
 
 
