@@ -5,7 +5,7 @@ date: 2016-03-30 02:13:52
 categories: cvxpy
 ---
 # CVXPY介绍
-CVXPY是一款基于python的凸优化问题建模与求解工具。
+CVXPY是一款基于python的凸优化问题建模与求解工具
 
 {% highlight python %}
 
@@ -17,7 +17,6 @@ n = 20
 numpy.random.seed(1)
 A = numpy.random.randn(m, n)
 b = numpy.random.randn(m)
-
 # Construct the problem.
 x = Variable(n)
 objective = Minimize(sum_squares(A*x - b))

@@ -5,7 +5,7 @@ data: 2016-07-11 16:08:48
 categories: Deeplearning
 ---
 ## How the backpropagation works?
-基本的符号表达:
+1.基本的符号表达:
 
 ![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/notation.png)
 
