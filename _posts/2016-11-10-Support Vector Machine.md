@@ -252,7 +252,7 @@ $$
 
 然后我们继续搜索$\alpha_{j}$来最优化目标函数，如果得到的值在$L$和$H$之外，那么就把这个值拉回该区间。可以证明$\alpha_j$由下面式子求得：
 
-$$\alpha_{j}:=\alpha_j-\frac{y_{j}(E_i-E_j)}{\eta}$$
+$$\alpha_{j}^{new,unclipped}:=\alpha_{j}^{old}-\frac{y_{j}(E_i-E_j)}{\eta}$$
 
 where
 
@@ -268,13 +268,10 @@ $$
 - 在等式约束中，将除$\alpha_i$和$\alpha_j$之外的其他$\alpha$固定，得到一个$\alpha_j$关于$\alpha_i$的表达式。
 - 将上式带入dual objective function中，得到一个关于$\alpha_j$的二次函数，令其二阶导数等于0（一般成立），得到了上面更新$\alpha_j$的表达式，记其为$\alpha_{j}^{new,unclipped}$，$E_k$和$\eta$是推导$\alpha_{j}^{new,unclipped}$时产生的中间量。
 
-
-
-
 然后我们通过下式将$\alpha_j$拉回$L$与$H$的区间
 
 $$
-\alpha_j :=
+\alpha_{j}^{new,clipped} :=
 \begin{cases}
 H,   &if\ \alpha_{j}^{new,unclipped} > H\\
 \alpha_{j}^{new,unclipped}, &if\ L \leq \alpha_{j}^{new,unclipped} \leq H\\
@@ -284,7 +281,7 @@ $$
 
 求出$\alpha_j$之后，$\alpha_i$由下式给出
 
-$$ \alpha_i := \alpha_i + y_{i}y_{j}(\alpha_{j}^{old}-\alpha_j) $$
+$$ \alpha_i := \alpha_i + y_{i}y_{j}(\alpha_{j}^{old}-\alpha_{j}^{new,clipped}) $$
 
 where $\alpha_{j}^{old}$是未经上面式子计算的原值。完整版的SMO能够处理$\eta=0$的情况。但在我们的简化版本中，如果$\eta=0$，我们可以将这种情况当做这组$\alpha$不能make progress的case。
 
