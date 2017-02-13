@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Implementing RNN with python and numpy"
-data: 2016-10-19 13:11:59
+date: 2016-10-19 13:11:59
 categories: TimeSeries
 ---
 ## A full RNN for language modeling

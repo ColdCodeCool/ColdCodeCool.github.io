@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Support Vector Machine and Sequential Minimal Optimization"
-data: 2016-11-10 19:05:43
+date: 2016-11-10 19:05:43
 categories: MachineLearning
 ---
 # 简单笔记
