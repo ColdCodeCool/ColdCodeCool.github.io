@@ -88,3 +88,11 @@ $(w^{l+1})^T$是第l+1层的权值矩阵的转置, 上式看起来很复杂, 但
 ![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/bpsgd.png)
 
 具体代码实现在上一篇已经给出.
+
+## 在卷积神经网络中BP如何进行
+#### 卷积层前馈
+输入层假设为$N\times N$的2D输入，如果我们使用一个$m\times m$的核$w$，我们的输出为$(N-m+1)\times (N-m+1)$的2D数据。假设$x$是未使用非线性映射之前的结果，$y$是使用非线性映射之后的结果。则卷积层的$i,j$像素位置的值为
+
+$$
+x_{ij}^{\mathcal{l}}
+$$
