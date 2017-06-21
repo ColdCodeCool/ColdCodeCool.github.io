@@ -91,7 +91,7 @@ $(w^{l+1})^T$是第l+1层的权值矩阵的转置, 上式看起来很复杂, 但
 
 ## 在卷积神经网络中BP如何进行
 #### 卷积层前馈
-输入层假设为$N\times N$的2D输入，如果我们使用一个$m\times m$的核$w$，我们的输出为$(N-m+1)\times (N-m+1)$的2D数据。卷积之后结果：
+输入层假设为2D数据，如果我们使用一个卷积核$w$，卷积之后结果：
 
 $$
 z_{x,y}^{l+1} = w^{l+1} * \sigma(z_{x,y}^{l}) + b_{x,y}^{l+1}=\sum_{a}\sum_{b}w_{a,b}^{l+1}\sigma(z_{x-a,y-b}^{l})+b_{x,y}^{l+1}
@@ -99,10 +99,11 @@ $$
 
 这个操作在Matlab中由一个函数完成：conv2(x,w,'valid')
 
-然后，对得到的x应用非线性映射得到
+我们讨论l层的error：
 
 $$
-y_{ij}^\ell = \sigma(x_{ij}^\ell).
+\delta_{x,y}^{l}=\frac{\partial C}{\partial z_{x,y}^{l}}=\sum_{x'}\sum_{y'}\frac{\partial C}{\partial z_{x',y'}^{l+1}}\frac{\partial z_{x',y'}^{l+1}}{\partial z_{x,y}^{l}}
 $$
+
 
 下面我们来看如何更新卷积层权值，
