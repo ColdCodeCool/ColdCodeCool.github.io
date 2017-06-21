@@ -108,13 +108,13 @@ $$
 进一步
 
 $$
-\frac{\partial C}{\partial z_{x,y}^l}=\sum_{x'}\sum_{y'}\delta_{x',y'}^{l+1}\partial(\sum_{a}\sum_{b}w_{a,b}^{l+1}\sigma(z_{x'-a,y'-b}^l)+b_{x',y'}^{l+1}){\partial z_{x,y}^l}
+\frac{\partial C}{\partial z_{x,y}^l}=\sum_{x'}\sum_{y'}\delta_{x',y'}^{l+1}\frac{\partial(\sum_{a}\sum_{b}w_{a,b}^{l+1}\sigma(z_{x'-a,y'-b}^l)+b_{x',y'}^{l+1})}{\partial z_{x,y}^l}
 $$
 
 我们不要被这个式子吓到，因为根据偏导的性质，分子上z的下标只有在$x'-a=x$，$y'-b=y$时，式子才不等于0，否则全部为0.因此，我们有
 
 $$
-\sum_{x'}\sum_{y'}\delta_{x',y'}^{l+1}\partial(\sum_{a}\sum_{b}w_{a,b}^{l+1}\sigma(z_{x'-a,y'-b}^l)+b_{x',y'}^{l+1}){\partial z_{x,y}^l} = \sum_{x'}\sum_{y'}\delta_{x',y'}^{l+1}w_{a,b}^{l+1}\sigma'(z_{x,y}^{l})
+\sum_{x'}\sum_{y'}\delta_{x',y'}^{l+1}\frac{\partial(\sum_{a}\sum_{b}w_{a,b}^{l+1}\sigma(z_{x'-a,y'-b}^l)+b_{x',y'}^{l+1})}{\partial z_{x,y}^l} = \sum_{x'}\sum_{y'}\delta_{x',y'}^{l+1}w_{a,b}^{l+1}\sigma'(z_{x,y}^{l})
 $$
 
 如果有$x=x'-a,y=y'-b$那么也有$a=x'-x,b=y'-y$，因此上式可以变为
