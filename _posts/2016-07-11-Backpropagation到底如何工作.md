@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "BP到底是如何实现的"
-data: 2016-07-11 16:08:48
+date: 2016-07-11 16:08:48
 categories: Deeplearning
 ---
 ## How the backpropagation works?
@@ -88,3 +88,51 @@ $(w^{l+1})^T$是第l+1层的权值矩阵的转置, 上式看起来很复杂, 但
 ![image](https://github.com/ColdCodeCool/ColdCodeCool.github.io/raw/master/images/bpsgd.png)
 
 具体代码实现在上一篇已经给出.
+
+## 在卷积神经网络中BP如何进行
+#### 卷积层前馈
+输入层假设为2D数据，如果我们使用一个卷积核$w$，卷积之后结果：
+
+$$
+z_{x,y}^{l+1} = w^{l+1} * \sigma(z_{x,y}^{l}) + b_{x,y}^{l+1}=\sum_{a}\sum_{b}w_{a,b}^{l+1}\sigma(z_{x-a,y-b}^{l})+b_{x,y}^{l+1}
+$$
+
+这个操作在Matlab中由一个函数完成：conv2(x,w,'valid')
+
+我们讨论l层的error：
+
+$$
+\delta_{x,y}^{l}=\frac{\partial C}{\partial z_{x,y}^{l}}=\sum_{x'}\sum_{y'}\frac{\partial C}{\partial z_{x',y'}^{l+1}}\frac{\partial z_{x',y'}^{l+1}}{\partial z_{x,y}^{l}}
+$$
+
+进一步
+
+$$
+\frac{\partial C}{\partial z_{x,y}^l}=\sum_{x'}\sum_{y'}\delta_{x',y'}^{l+1}\frac{\partial(\sum_{a}\sum_{b}w_{a,b}^{l+1}\sigma(z_{x'-a,y'-b}^l)+b_{x',y'}^{l+1})}{\partial z_{x,y}^l}
+$$
+
+我们不要被这个式子吓到，因为根据偏导的性质，分子上z的下标只有在$x'-a=x$，$y'-b=y$时，式子才不等于0，否则全部为0.因此，我们有
+
+$$
+\sum_{x'}\sum_{y'}\delta_{x',y'}^{l+1}\frac{\partial(\sum_{a}\sum_{b}w_{a,b}^{l+1}\sigma(z_{x'-a,y'-b}^l)+b_{x',y'}^{l+1})}{\partial z_{x,y}^l} = \sum_{x'}\sum_{y'}\delta_{x',y'}^{l+1}w_{a,b}^{l+1}\sigma'(z_{x,y}^{l})
+$$
+
+如果有$x=x'-a,y=y'-b$那么也有$a=x'-x,b=y'-y$，因此上式可以变为
+
+$$
+\sum_{x'}\sum_{y'}\delta_{x',y'}^{l+1}w_{a,b}^{l+1}\sigma'(z_{x,y}^{l})=\sum_{x'}\sum_{y'}\delta_{x',y'}^{l+1}w_{x'-x,y'-y}^{l+1}\sigma'(z_{x,y}^l)
+$$
+
+最后我们的error转化为
+
+$$
+\sum_{x'}\sum_{y'}\delta_{x',y'}^{l+1}w_{x'-x,y'-y}^{l+1}\sigma'(z_{x,y}^l)=\delta^{l+1} * w_{-x,-y}^{l+1}\sigma'(z_{x,y}^l)
+$$
+
+针对上式有$ROT180(w_{x,y}^{l+1})=w_{-x,-y}^{l+1}$，即将卷积核旋转180度。
+
+同样可以推出
+
+$$
+\frac{\partial C}{\partial w_{a,b}^l}=\delta_{a,b}^l * \sigma(ROT180(z_{a,b}^{l-1}))
+$$

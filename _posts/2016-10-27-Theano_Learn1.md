@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Theano学习(1)"
-data: 2016-10-27 16:15:13
+date: 2016-10-27 16:15:13
 categories: TheanoLearn
 ---
 ## Theano是什么

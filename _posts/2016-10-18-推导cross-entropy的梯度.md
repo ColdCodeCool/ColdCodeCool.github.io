@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Derivation of the gradient of the Cross-Entropy loss function"
-data: 2016-10-18 10:21:16
+date: 2016-10-18 10:21:16
 categories: Deeplearning
 ---
 ## 梯度推导
