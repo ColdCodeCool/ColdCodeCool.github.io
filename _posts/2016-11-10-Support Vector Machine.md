@@ -74,6 +74,13 @@ $$\max_{\alpha_i\geq 0}\min_{w,b}\mathcal{L}(w,b,\alpha)=d^*$$
 
 当然，交换以后的问题不再等价于原问题，这个新问题的最优值用$d^\*$来表示。并且，我们有$d^{\*}\leq p^\*$，总之第二个问题的最优值在这里提供了一个第一个问题的最优值的一个下界，在满足某些条件的情况下，这两者相等，这时我们就可以通过求解第二个问题间接求解第一个问题。具体来说，就是要满足KKT条件。
 
+KKT条件的几个要素：
+
+- primal feasible
+- dual feasible
+- dual-inner optimal
+- primal-inner optimal（at optimal all ’Lagrange terms‘ disapper），also called complementary slackness
+
 首先要让$\mathcal{L}$关于$w$和$b$最小化，我们分别令$\partial {\mathcal{L}}/\partial{w}$和$\partial {\mathcal{L}}/\partial{b}$等于零：
 
 $$
